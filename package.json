@@ -1,7 +1,6 @@
 {
   "name": "pokee-dokee",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
@@ -10,7 +9,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.14.1",
-    "nodemon": "^1.11.0"
-  }
+    "express": "^4.14.1"
+  },
+  "devDependencies": {
+  "nodemon": "^1.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daveJS133/Poke-Doke.git"
+  },
+  "bugs": {
+    "url": "https://github.com/daveJS133/Poke-Doke/issues"
+  },
+  "homepage": "https://github.com/daveJS133/Poke-Doke#readme",
+  "description": ""
 }
