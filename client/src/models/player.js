@@ -5,4 +5,4 @@ var Player = function(playerObj){
   this.pic = playerObj.pic//url
   this.x = playerObj.x//600
   this.y = playerObj.y//600
-
+}

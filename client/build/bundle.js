@@ -68,9 +68,49 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var UI = __webpack_require__(1);
+
+var app = function() {
+  new UI();
+};
+
+window.onload = app;
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
+//// HANDLE MOVEMENT ON MAP ////////////
+var UI = function() {
 
+  var canvas = document.querySelector("#map");
+  var context = canvas.getContext('2d');
+  var ash = document.createElement('img');
+  ash.src = "/img/ash.png";
+
+
+  var drawAsh = function(image) {
+
+    if (!image) image = this;
+    
+
+    context.drawImage(ash, 150, 150, 40, 40);
+
+    console.log('draw ash', ash.src);
+  };
+
+  if (ash.complete) {
+    drawAsh(ash);
+  }
+  else {
+    ash.onload = drawAsh;
+  }
+
+};
+
+module.exports = UI;
 
 /***/ })
 /******/ ]);
