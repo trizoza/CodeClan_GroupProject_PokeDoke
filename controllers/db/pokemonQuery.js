@@ -7,9 +7,10 @@ PokemonQuery.prototype = {
  all: function(onQueryFinished){
    MongoClient.connect(this.url, function(err,db){
      if(db){
-       var collection = db.collection('original151Pokemons');
+       var collection = db.collection('sourcePokemons');
        collection.find().toArray(function(err,docs) {
          onQueryFinished(docs);
+         console.log(collection);
        });
      }
 

@@ -1,8 +1,8 @@
 use pokedoke_db;
 
-db.original151Pokemons.drop();
+db.sourcePokemons.drop();
 
-db.original151Pokemons.insert([
+db.sourcePokemons.insert([
 {
   _id: "58b0416d2a67fb7209c741d5",
   name: "bulbasaur",
@@ -1815,6 +1815,6 @@ db.original151Pokemons.insert([
   type: "psychic",
   move: "mega-punch"
 }
+
 ]);
 
-db.original151Pokemons.find();
