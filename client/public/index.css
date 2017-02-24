@@ -1,0 +1,9 @@
+#body {
+  width: 600px;
+  margin: 0 auto;
+  background-color: lightblue;
+}
+
+#map {
+  background-color: orange;
+}

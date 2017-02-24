@@ -8,10 +8,7 @@ sourceRouter.get('/',function(req, res) {
   query.all(function(docs) {
     res.json(docs);
   });
-});
-
-sourceRouter.get('/',function(req, res) {
-  console.log("success");
+  console.log('source pokemon loaded');
 });
 
 module.exports = sourceRouter;
