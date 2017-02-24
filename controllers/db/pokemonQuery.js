@@ -17,4 +17,6 @@ PokemonQuery.prototype = {
  }
 }
 
+
+
 module.exports = PokemonQuery;
