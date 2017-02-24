@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path')
 
-router.use('/original151Pokemons', require('./original151Pokemons'));
+router.use('/sourcePokemons', require('./sourcePokemons'));
 
 router.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/../client/build/index.html'));

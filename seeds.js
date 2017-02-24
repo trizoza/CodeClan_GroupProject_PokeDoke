@@ -1,11 +1,11 @@
 use pokedoke_db;
 
-db.original151Pokemons.drop();
+db.sourcePokemons.drop();
 
-db.original151Pokemons.insert([
+db.sourcePokemons.insert([
   {name: "bulbasaur"}, 
   {name: "charmander"}, 
   {name: "squirtle"}
 ]);
 
-db.original151Pokemons.find();
+db.sourcePokemons.find();
