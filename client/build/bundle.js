@@ -240,7 +240,14 @@ var Map = __webpack_require__(0);
 
 var app = function() {
   // new UI();
+
   new Map();
+  
+ 
+
+
+
+
 };
 
 window.onload = app;
