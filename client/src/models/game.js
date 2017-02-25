@@ -71,7 +71,7 @@ Game.prototype = {
     //unless someone has no pokemon
     for(i = leastPokemonLeft; i>0; i = leastPokemonLeft){
       //unless pokemon has no health
-      for(j = leastHp.pokemon.fightHp; j>0; j = leastHp.pokemon.fightHp;){
+      for(j = leastHp.pokemon.fightHp; j>0; j = leastHp.pokemon.fightHp){
         //choose who attacks
         if (playersTurn){
           makeAttack(playersFightingPokemon,opponantsFightingPokemon);
