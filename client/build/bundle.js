@@ -72,7 +72,6 @@
 
 //// HANDLE MOVEMENT ON MAP ////////////
 
-
 //// need to require player for coordinates ////////
 var Map = function() {
   var canvas = document.querySelector("#map");
@@ -97,7 +96,7 @@ var Map = function() {
   loadCanvas = function() {
     
     pavement.onload = function() {
-      context.drawImage(this, 0, 0, 230, 160);
+      context.drawImage(this, 0, 0, 230, 190);
 
       ash.onload = function() {
         context.drawImage(this, x - ashWidth/2, y - ashWidth/2, ashWidth, ashHeight);
