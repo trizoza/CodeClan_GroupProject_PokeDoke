@@ -8,5 +8,7 @@ var Pokemon = function(pokemonObj){
   this.back_picture = pokemonObj.back_picture;
   this.type = pokemonObj.type;
   this.move = pokemonObj.move;
+  this.fightHp = pokemonObj.fightHp;
 }
 
+module.exports = Pokemon;

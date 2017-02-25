@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var path = require('path')
 
+
+
 router.use('/sourcePokemons', require('./sourcePokemons'));
 
 router.get('/', function (req, res) {
