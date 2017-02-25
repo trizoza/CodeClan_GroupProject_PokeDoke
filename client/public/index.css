@@ -62,14 +62,16 @@ body {
   border: none !important;
 }
 
-
-
 #console {
   position: absolute;
   bottom: 200px;
   right: 355px;
   width: 580px;
   height: 460px;
+}
+
+#fightInGrass{
+background-color: green;
 }
 
 #map {

@@ -75,6 +75,7 @@
 //// need to require player for coordinates ////////
 var Map = function() {
   var canvas = document.querySelector("#map");
+  var fightInGrassPage = document.querySelector("#fightInGrass")
   var context = canvas.getContext('2d');
   var x = 300;
   var y = 200;
@@ -99,8 +100,9 @@ var Map = function() {
   var aButton = document.querySelector('#a-button');
 
 
+
   loadCanvas = function() {
-    
+
     pavement.onload = function() {
       context.drawImage(this, 0, 0, 580, 460);
       ash.onload = function() {
@@ -280,8 +282,16 @@ var Map = function() {
      moveAsh(increment, 0);
    }
  }
- 
+
  aButton.onclick = function(){
+  if (canvas.style.display==="none"){
+    canvas.style.display="";
+    // fightInGrassPage.style.display ="none";
+  }
+  else{
+    canvas.style.display = "none";
+    // fightInGrassPage.style.dipslay = "";
+  }
   console.log('aButton has been clicked');
 } 
 
