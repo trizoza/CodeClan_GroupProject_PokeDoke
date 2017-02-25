@@ -82,7 +82,7 @@ var Map = function() {
 
   var ash = document.createElement('img');
   ash.src = "/img/ash.png";
-  var ashWidth = 15;
+  var ashWidth = 20;
   var ashHeight = ashWidth;
   var house = document.createElement('img');
   house.src = "/img/house.png";
@@ -91,7 +91,7 @@ var Map = function() {
   var grass = document.createElement('img');
   grass.src = "/img/grass.png";
   var pavement = document.createElement('img');
-  pavement.src = "/img/pavement.jpeg";
+  pavement.src = "/img/pavement.png";
 
   loadCanvas = function() {
     
@@ -103,16 +103,16 @@ var Map = function() {
       };
 
       house.onload = function() {
-        context.drawImage(this, 0, 120, 40, 40);
+        context.drawImage(this, 0, 0);
       };
 
       gym.onload = function() {
-        context.drawImage(this, 20, 0, 80, 40);
-        context.drawImage(this, 120, 0, 80, 40);
+        context.drawImage(this, 20, 0);
+        context.drawImage(this, 120, 0);
       };
       
       grass.onload = function() {
-        context.drawImage(this, 200, 100, 60, 60);
+        context.drawImage(this, 200, 100);
       };
 
       drawMap();
@@ -123,9 +123,9 @@ var Map = function() {
 
 ////// after the images are loaded for use, draw them in proper order
   drawMap = function() {
-    context.drawImage(pavement, 0, 0, 230, 160);
-    context.drawImage(house, 0, 80, 60, 50);
-    context.drawImage(gym, 20, 0, 95, 60);
+    context.drawImage(pavement, 0, 0, 230, 190);
+    context.drawImage(house, 0, 110, 70, 60);
+    context.drawImage(gym, 20, 0, 100, 80);
     context.drawImage(gym, 120, 0, 80, 40);
     context.drawImage(grass, 200, 100, 60, 60);
   };
