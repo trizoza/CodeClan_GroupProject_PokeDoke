@@ -175,6 +175,15 @@ var Map = function() {
       if (x >= 600 - increment) {
         moveAsh(0, 0);
       }
+      else if (x === 20 && 240 <= y && y <= 360) {
+        moveAsh(0, 0);
+      }
+      else if (x === 20 && 20 <= y && y <= 160) {
+        moveAsh(0, 0);
+      }
+      else if (x === 320 && 20 <= y && y <= 160) {
+        moveAsh(0, 0);
+      }
       else{
         moveAsh(increment, 0);
       }
@@ -183,6 +192,15 @@ var Map = function() {
     if (event.keyCode === 37) {
       // left
       if (x <= 0 + increment) {
+        moveAsh(0, 0);
+      }
+      else if (x === 180 && 240 <= y && y <= 360) {
+        moveAsh(0, 0);
+      }
+      else if (x === 280 && 20 <= y && y <= 160) {
+        moveAsh(0, 0);
+      }
+      else if (x === 580 && 20 <= y && y <= 160) {
         moveAsh(0, 0);
       }
       else{
@@ -195,6 +213,17 @@ var Map = function() {
       if (y <= 0 + increment) {
         moveAsh(0, 0);
       }
+      else if (y === 380 && 40 <= x && x <= 160) {
+        moveAsh(0, 0);
+      }
+      else if (y === 180 && 40 <= x && x <= 260) {
+        moveAsh(0, 0);
+      }
+      else if (y === 180 && 340 <= x && x <= 560) {
+        moveAsh(0, 0);
+      }
+  
+
       else {
         moveAsh(0, -increment);
       }
@@ -203,6 +232,9 @@ var Map = function() {
     if (event.keyCode === 40) {
       // down
       if (y >= 400 - increment) {
+        moveAsh(0, 0);
+      }
+      else if (y === 220 && 40 <= x && x <= 160) {
         moveAsh(0, 0);
       }
       else {
