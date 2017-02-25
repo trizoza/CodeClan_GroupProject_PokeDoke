@@ -92,6 +92,34 @@ var Map = function() {
   grass.src = "/img/grass.png";
   var pavement = document.createElement('img');
   pavement.src = "/img/pavement.png";
+  var upButton = document.querySelector('#up-button');
+  var downButton = document.querySelector('#down-button');
+
+  upButton.onclick = function(){
+    if (y <= 20) {
+      moveAsh(0, 0);
+    }
+    else if (y === 420 && 20 <= x && x <= 160) {
+      moveAsh(0, 0);
+    }
+    else if (y === 190 && 20 <= x && x <= 230) {
+      moveAsh(0, 0);
+    }
+    else if (y === 190 && 350 <= x && x <= 560) {
+      moveAsh(0, 0);
+    }
+    else {
+      moveAsh(0, -increment);
+    }
+  }
+
+  
+ 
+
+
+    
+
+  
 
   loadCanvas = function() {
     
@@ -111,9 +139,9 @@ var Map = function() {
         context.drawImage(this, 540, 400, 40, 60);
       };
       drawMap();
-      
+      context.drawImage(ash, x - 20, y - 20, ashWidth, ashHeight);
     }; 
-    context.drawImage(ash, x - 20 + xInc, y - 20 + yInc, ashWidth, ashHeight);
+    
   };
 
   drawMap = function() {
@@ -157,6 +185,7 @@ var Map = function() {
 
   document.onkeydown = function(event) {
     console.log(event.keyCode);
+    console.log(upButton.onclick);
     if (event.keyCode === 39) {
       // right
       if (x >= 560) {
