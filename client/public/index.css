@@ -18,8 +18,8 @@ body {
   left: 138px;
   width: 63px;
   height: 63px;
-  border: 3px solid #73AD21;
-  background-color: transparent;
+  background: transparent;
+  border: none !important;
 }
 
 #down-button{
@@ -28,8 +28,8 @@ body {
   left: 138px;
   width: 63px;
   height: 63px;
-  border: 3px solid #73AD21;
-  background-color: transparent;
+  background: transparent;
+  border: none !important;
 }
 
 #right-button{
@@ -38,8 +38,8 @@ body {
   left: 198px;
   width: 63px;
   height: 63px;
-  border: 3px solid #73AD21;
-  background-color: transparent;
+  background: transparent;
+  border: none !important;
 }
 
 #left-button{
@@ -48,8 +48,8 @@ body {
   left: 75px;
   width: 63px;
   height: 63px;
-  border: 3px solid #73AD21;
-  background-color: transparent;
+  background: transparent;
+  border: none !important;
 }
 
 #a-button{
@@ -58,8 +58,8 @@ body {
   right: 75px;
   width: 100px;
   height: 100px;
-  border: 3px solid #73AD21;
-  background-color: transparent;
+  background: transparent;
+  border: none !important;
 }
 
 
