@@ -52,7 +52,7 @@ var Map = function() {
 
   };
 
-
+////// after the images are loaded for use, draw them in proper order
   drawMap = function() {
     context.drawImage(pavement, 0, 0, 600, 400);
     context.drawImage(house, 40, 240, 120, 120);
@@ -71,9 +71,6 @@ var Map = function() {
     y += yInc;
     console.log(x,y);
   };
-
-  ////here vvv
-
 
   document.onkeydown = function(event) {
     console.log(event.keyCode);

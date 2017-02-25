@@ -63,31 +63,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var UI = __webpack_require__(1);
-var Map = __webpack_require__(2);
-
-var app = function() {
-  // new UI();
-  new Map();
-};
-
-window.onload = app;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports) {
 
 //// HANDLE MOVEMENT ON MAP ////////////
@@ -144,7 +124,7 @@ var Map = function() {
 
   };
 
-
+////// after the images are loaded for use, draw them in proper order
   drawMap = function() {
     context.drawImage(pavement, 0, 0, 600, 400);
     context.drawImage(house, 40, 240, 120, 120);
@@ -163,9 +143,6 @@ var Map = function() {
     y += yInc;
     console.log(x,y);
   };
-
-  ////here vvv
-
 
   document.onkeydown = function(event) {
     console.log(event.keyCode);
@@ -248,6 +225,26 @@ var Map = function() {
 };
 
 module.exports = Map;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var UI = __webpack_require__(1);
+var Map = __webpack_require__(0);
+
+var app = function() {
+  // new UI();
+  new Map();
+};
+
+window.onload = app;
 
 /***/ })
 /******/ ]);
