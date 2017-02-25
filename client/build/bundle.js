@@ -120,10 +120,10 @@ Game.prototype = {
   fight: function(player, opponant, numOfEnemies){
     //create opponant
     var opponant = new Player;
-    //push a random unused Pokemon to opponant
+    //push random unused Pokemon to opponant
     opponant.pokemonOnHand = populateOpponant(opponant, numOfEnemies);
     console.log('opponant has ' + opponant.pokemonOnHand.length + ' pokemon');
-    //pokemon they have left able to fight
+    //pokemon left able to fight
     var playersPokemonAlive = player.pokemonOnHand;
     var opponantsPokemonAlive = opponant.pokemonOnHand;
     //pokemon currently fighting
@@ -137,13 +137,13 @@ Game.prototype = {
 
     //number of pokemon of currently loosing player - if 0 fight is over
     var leastPokemonLeft = getLeastPokemon(playersPokemonAlive, opponantsPokemonAlive);
-    // finds pokemon of least health & returns an object containing pokemon of least health and their owner, so can be removed from alive pokemon when health becomes  zero and next is used
+    // finds pokemon of least health & returns an object containing pokemon of least health and their owner, so can be removed from alive pokemon when health becomes zero. Then next is used
     var leastHp = getLeastHealth(playersFightingPokemon, opponantsFightingPokemon);
     //player takes first turn
     var playersTurn = true;
-    //unless someone has no pokemon
+    //unless someone has no pokemon do loop
     for(i = leastPokemonLeft; i>0; i = leastPokemonLeft){
-      //unless pokemon has no health
+      //unless pokemon has no health do loop
       for(j = leastHp.pokemon.fightHp; j>0; j = leastHp.pokemon.fightHp){
         //choose who attacks
         if (playersTurn){
