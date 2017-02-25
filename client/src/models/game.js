@@ -61,7 +61,7 @@ Game.prototype = {
     //set fight hp so original hp is not overwritten during fight
     playersFightingPokemon.fightHp =  playersFightingPokemon.hp;
     opponantsFightingPokemon.fightHp =  opponantsFightingPokemon.hp;
-  
+
     //number of pokemon of currently loosing player - if 0 fight is over
     var leastPokemonLeft = getLeastPokemon(playersPokemonAlive, opponantsPokemonAlive);
     // finds pokemon of least health & returns an object containing pokemon of least health and their owner, so can be removed from alive pokemon when health becomes  zero and next is used
@@ -69,9 +69,9 @@ Game.prototype = {
     //player takes first turn
     var playersTurn = true;
     //unless someone has no pokemon
-    for(i = leastPokemonLeft; i>0;){
+    for(i = leastPokemonLeft; i>0; i = leastPokemonLeft){
       //unless pokemon has no health
-      for(i = leastHp.pokemon.fightHp; i>0;){
+      for(j = leastHp.pokemon.fightHp; j>0; j = leastHp.pokemon.fightHp;){
         //choose who attacks
         if (playersTurn){
           makeAttack(playersFightingPokemon,opponantsFightingPokemon);
