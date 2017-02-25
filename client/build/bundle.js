@@ -66,9 +66,8 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 2:
+/******/ ([
+/* 0 */
 /***/ (function(module, exports) {
 
 //// HANDLE MOVEMENT ON MAP ////////////
@@ -237,12 +236,18 @@ var Map = __webpack_require__(0);
 
 var app = function() {
   // new UI();
+
   new Map();
+  
+ 
+
+
+
+
 };
 
 window.onload = app;
 
 /***/ })
-
-/******/ });
+/******/ ]);
 //# sourceMappingURL=bundle.js.map
