@@ -63,11 +63,34 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 244);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 244:
+/***/ (function(module, exports, __webpack_require__) {
+
+var UI = __webpack_require__(247);
+var Map = __webpack_require__(246);
+
+var app = function() {
+  // new UI();
+
+  new Map();
+  
+ 
+
+
+
+
+};
+
+window.onload = app;
+
+/***/ }),
+
+/***/ 246:
 /***/ (function(module, exports) {
 
 //// HANDLE MOVEMENT ON MAP ////////////
@@ -255,32 +278,13 @@ var Map = function() {
 module.exports = Map;
 
 /***/ }),
-/* 1 */
+
+/***/ 247:
 /***/ (function(module, exports) {
 
 
 
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var UI = __webpack_require__(1);
-var Map = __webpack_require__(0);
-
-var app = function() {
-  // new UI();
-
-  new Map();
-  
- 
-
-
-
-
-};
-
-window.onload = app;
-
 /***/ })
-/******/ ]);
+
+/******/ });
 //# sourceMappingURL=bundle.js.map
