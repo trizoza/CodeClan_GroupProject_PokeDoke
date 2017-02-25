@@ -14,52 +14,52 @@ body {
 
 #up-button{
   position: absolute;
-  top: 95px;
-     left: 55px;
-     width: 25px;
-     height: 25px;
-     border: 3px solid #73AD21;
-     background-color: transparent;
+  top: 238px;
+  left: 138px;
+  width: 63px;
+  height: 63px;
+  border: 3px solid #73AD21;
+  background-color: transparent;
 }
 
 #down-button{
   position: absolute;
-  top: 145px;
-     left: 55px;
-     width: 25px;
-     height: 25px;
-     border: 3px solid #73AD21;
-     background-color: transparent;
+  top: 363px;
+  left: 138px;
+  width: 63px;
+  height: 63px;
+  border: 3px solid #73AD21;
+  background-color: transparent;
 }
 
 #right-button{
   position: absolute;
-  top: 120px;
-     left: 79px;
-     width: 25px;
-     height: 25px;
-     border: 3px solid #73AD21;
-     background-color: transparent;
+  top: 300px;
+  left: 198px;
+  width: 63px;
+  height: 63px;
+  border: 3px solid #73AD21;
+  background-color: transparent;
 }
 
 #left-button{
   position: absolute;
-  top: 120px;
-     left: 30px;
-     width: 25px;
-     height: 25px;
-     border: 3px solid #73AD21;
-     background-color: transparent;
+  top: 300px;
+  left: 75px;
+  width: 63px;
+  height: 63px;
+  border: 3px solid #73AD21;
+  background-color: transparent;
 }
 
 #a-button{
   position: absolute;
-  top: 108px;
-     right: 30px;
-     width: 40px;
-     height: 40px;
-     border: 3px solid #73AD21;
-     background-color: transparent;
+  top: 270px;
+  right: 75px;
+  width: 100px;
+  height: 100px;
+  border: 3px solid #73AD21;
+  background-color: transparent;
 }
 
 
