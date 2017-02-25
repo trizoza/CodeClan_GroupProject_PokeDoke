@@ -77,13 +77,13 @@
 var Map = function() {
   var canvas = document.querySelector("#map");
   var context = canvas.getContext('2d');
-  var x = 300;
-  var y = 200;
-  var increment = 20;
+  var x = 115;
+  var y = 80;
+  var increment = 5;
 
   var ash = document.createElement('img');
   ash.src = "/img/ash.png";
-  var ashWidth = 40;
+  var ashWidth = 15;
   var ashHeight = ashWidth;
   var house = document.createElement('img');
   house.src = "/img/house.png";
@@ -97,25 +97,23 @@ var Map = function() {
   loadCanvas = function() {
     
     pavement.onload = function() {
-      context.drawImage(this, 0, 0, 600, 400);
+      context.drawImage(this, 0, 0, 230, 160);
 
       ash.onload = function() {
         context.drawImage(this, x - ashWidth/2, y - ashWidth/2, ashWidth, ashHeight);
       };
 
       house.onload = function() {
-        context.drawImage(this, 40, 240, 120, 120);
+        context.drawImage(this, 0, 120, 40, 40);
       };
 
       gym.onload = function() {
-        context.drawImage(this, 40, 0, 220, 160);
-        context.drawImage(this, 340, 0, 220, 160);
+        context.drawImage(this, 20, 0, 80, 40);
+        context.drawImage(this, 120, 0, 80, 40);
       };
       
       grass.onload = function() {
-        context.drawImage(this, 240, 220, 160, 260);
-        context.drawImage(this, 360, 220, 160, 260);
-        context.drawImage(this, 490, 220, 160, 260);
+        context.drawImage(this, 200, 100, 60, 60);
       };
 
       drawMap();
@@ -126,13 +124,11 @@ var Map = function() {
 
 ////// after the images are loaded for use, draw them in proper order
   drawMap = function() {
-    context.drawImage(pavement, 0, 0, 600, 400);
-    context.drawImage(house, 40, 240, 120, 120);
-    context.drawImage(gym, 40, 0, 220, 160);
-    context.drawImage(gym, 340, 0, 220, 160);
-    context.drawImage(grass, 240, 220, 160, 260);
-    context.drawImage(grass, 360, 220, 160, 260);
-    context.drawImage(grass, 490, 220, 160, 260);
+    context.drawImage(pavement, 0, 0, 230, 160);
+    context.drawImage(house, 0, 80, 60, 50);
+    context.drawImage(gym, 20, 0, 95, 60);
+    context.drawImage(gym, 120, 0, 80, 40);
+    context.drawImage(grass, 200, 100, 60, 60);
   };
 
 
