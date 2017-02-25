@@ -56,8 +56,10 @@ Game.prototype = {
     //pokemon currently fighting
     var playersFightingPokemon = playersPokemonAlive[0];
     console.log('player chose ' + playersFightingPokemon.name);
+    //todo: update message and setTimeout until button pressed
     var opponantsFightingPokemon = opponantsPokemonAlive[0];
     console.log('opponant chose ' + opponantsFightingPokemon.name);
+    //todo: update message and setTimeout until button pressed
     //set fight hp so original hp is not overwritten during fight
     playersFightingPokemon.fightHp =  playersFightingPokemon.hp;
     opponantsFightingPokemon.fightHp =  opponantsFightingPokemon.hp;
@@ -74,14 +76,17 @@ Game.prototype = {
       for(j = leastHp.pokemon.fightHp; j>0; j = leastHp.pokemon.fightHp){
         //choose who attacks
         if (playersTurn){
+          //todo: update message and setTimeout until button pressed
           makeAttack(playersFightingPokemon,opponantsFightingPokemon);
           opponantsFightingPokemon.fightHp -= damage;
           console.log(playersFightingPokemon.name + ' used ' + playersFightingPokemon.move + ' and did ' + damage + ' damage');
+          //todo: update message and setTimeout until button pressed
           playersTurn = false;
         }else if(!playersTurn){
           makeAttack(opponantsFightingPokemon,playersFightingPokemon);
           playersFightingPokemon.fightHp -= damage;
           console.log(playersFightingPokemon.name + ' used ' + playersFightingPokemon.move + ' and did ' + damage + ' damage');
+          //todo: update message and setTimeout until button pressed
           playersTurn = true;
         } else{
           console.log('error taking turns');
@@ -90,6 +95,7 @@ Game.prototype = {
         leastHp = getLeastHealth(playersFightingPokemon, opponantsFightingPokemon);
         if (leastHp.pokemon.fightHp == 0){
           console.log(leastHp.pokemon.name + 'fell unconcious');
+          //todo: update message and setTimeout until button pressed
         }
         //end of hp check loop
       }
