@@ -1,8 +1,12 @@
 var game = require('./models/game');
 var Player = require('./models/player');
+var Map = require('./views/map');
+var UI = require('./views/ui');
 
 var app = function() {
  
+  // new UI();
+  new Map();
 
   var makeRequest = function(url, callback){
     var request = new XMLHttpRequest();
@@ -28,6 +32,3 @@ var app = function() {
 
 
 window.onload = app();
-
-
-
