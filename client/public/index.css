@@ -14,10 +14,10 @@ body {
 
 #console {
   position: absolute;
-  bottom: 77px;
-  right: 145px;
-  width: 230px;
-  height: 190px;
+  bottom: 200px;
+  right: 355px;
+  width: 580px;
+  height: 460px;
 }
 
 #map {
