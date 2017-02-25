@@ -91,6 +91,7 @@ Game.prototype = {
         if (leastHp.pokemon.fightHp == 0){
           console.log(leastHp.pokemon.name + 'fell unconcious');
         }
+        //end of hp check loop
       }
       //when a pokemon looses all health remove from alive pokemon
       if (leastHp.fighter == 'player'){
