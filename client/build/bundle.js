@@ -137,8 +137,9 @@ Game.prototype = {
   
     //number of pokemon of currently loosing player - if 0 fight is over
     var leastPokemonLeft = getLeastPokemon(playersPokemonAlive, opponantsPokemonAlive);
-    // finds pokemon of least health & returns an object containing pokemon of least health and their owner, so can be removed from alive pokemon and next is used
+    // finds pokemon of least health & returns an object containing pokemon of least health and their owner, so can be removed from alive pokemon when health becomes  zero and next is used
     var leastHp = getLeastHealth(playersFightingPokemon, opponantsFightingPokemon);
+    //player takes first turn
     var playersTurn = true;
     //unless someone has no pokemon
     for(i = leastPokemonLeft; i>0;){
