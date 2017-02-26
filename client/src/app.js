@@ -1,8 +1,13 @@
-var game = require('./views/game');
+
 var Player = require('./models/player');
-var Map = require('./views/map')
+var Pokemon = require('./models/pokemon');
+var Map = require('./views/map');
+var UI = require('./views/ui');
 
 var app = function() {
+ 
+  // new UI();
+ 
 
   var makeRequest = function(url, callback){
     var request = new XMLHttpRequest();
@@ -16,13 +21,16 @@ var app = function() {
       if(this.status !== 200) return;
         var jsonString = this.responseText;
         var jsonObject = JSON.parse(jsonString);
-        
+
+
         var pokemonData = jsonObject;
-        new Map(pokemonData);
+        new Map(pokemonData, Player, Pokemon);
       });
   }
 
   allPokemon();
 }
 
-window.onload = app;
+
+
+window.onload = app();

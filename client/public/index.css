@@ -18,8 +18,8 @@ body {
   left: 138px;
   width: 63px;
   height: 63px;
-  background: transparent;
-  border: none !important;
+  border: 3px solid #73AD21;
+  background-color: transparent;
 }
 
 #down-button{
@@ -28,8 +28,8 @@ body {
   left: 138px;
   width: 63px;
   height: 63px;
-  background: transparent;
-  border: none !important;
+  border: 3px solid #73AD21;
+  background-color: transparent;
 }
 
 #right-button{
@@ -38,8 +38,8 @@ body {
   left: 198px;
   width: 63px;
   height: 63px;
-  background: transparent;
-  border: none !important;
+  border: 3px solid #73AD21;
+  background-color: transparent;
 }
 
 #left-button{
@@ -48,8 +48,8 @@ body {
   left: 75px;
   width: 63px;
   height: 63px;
-  background: transparent;
-  border: none !important;
+  border: 3px solid #73AD21;
+  background-color: transparent;
 }
 
 #a-button{
@@ -58,9 +58,11 @@ body {
   right: 75px;
   width: 100px;
   height: 100px;
-  background: transparent;
-  border: none !important;
+  border: 3px solid #73AD21;
+  background-color: transparent;
 }
+
+
 
 #console {
   position: absolute;
@@ -70,19 +72,6 @@ body {
   height: 460px;
 }
 
-#welcomeScreen{
-  position: absolute;
-  display: block;
-  background-color: white;
-  width: 580px;
-  height: 460px;
-  z-index: 1;
-}
-
 #map {
-  display: block;
-  position: absolute;
   background-color: orange;
-  z-index: 100;
 }
-
