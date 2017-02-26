@@ -70,10 +70,19 @@ body {
   height: 460px;
 }
 
-#fightInGrass{
-background-color: green;
+#welcomeScreen{
+  position: absolute;
+  display: block;
+  background-color: white;
+  width: 580px;
+  height: 460px;
+  z-index: 1;
 }
 
 #map {
+  display: block;
+  position: absolute;
   background-color: orange;
+  z-index: 100;
 }
+

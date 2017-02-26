@@ -75,7 +75,7 @@
 //// need to require player for coordinates ////////
 var Map = function() {
   var canvas = document.querySelector("#map");
-  var fightInGrassPage = document.querySelector("#fightInGrass")
+  var fightInGrassPage = document.querySelector("#fightInGrass");
   var context = canvas.getContext('2d');
   var x = 300;
   var y = 200;
@@ -283,17 +283,17 @@ var Map = function() {
    }
  }
 
- aButton.onclick = function(){
-  if (canvas.style.display==="none"){
-    canvas.style.display="";
-    // fightInGrassPage.style.display ="none";
-  }
-  else{
-    canvas.style.display = "none";
-    // fightInGrassPage.style.dipslay = "";
-  }
-  console.log('aButton has been clicked');
-} 
+//  aButton.onclick = function(){
+//   if (canvas.style.display == "none"){
+//     canvas.style.display = "block";
+//     fightInGrassPage.style.display ="none";
+//   }
+//   else (canvas.style.display != "none") {
+//     canvas.style.display = "none";
+//     fightInGrassPage.style.display = "block";
+//   }
+//   console.log('aButton has been clicked');
+// }
 
 loadCanvas();
 
