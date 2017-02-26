@@ -8,7 +8,11 @@ sourceRouter.get('/',function(req, res) {
   query.all(function(docs) {
     res.json(docs);
   });
+
   console.log('source pokemon loaded');
+
 });
+
+
 
 module.exports = sourceRouter;
