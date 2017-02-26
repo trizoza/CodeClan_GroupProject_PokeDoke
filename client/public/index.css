@@ -73,6 +73,15 @@ body {
 #welcomeScreen {
   display: block;
   position: absolute;
+  z-index: 100;
+  width: 580px;
+  height: 460px;
+  background-color: white;
+}
+
+#fight_screen {
+  display: block;
+  position: absolute;
   z-index: 1;
   width: 580px;
   height: 460px;
@@ -82,6 +91,6 @@ body {
 #map {
   display: block;
   position: absolute;
-  z-index: 100;
+  z-index: 1;
   background-color: orange;
 }

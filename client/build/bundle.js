@@ -1,5 +1,123 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+/******/
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+var Player = function(){
+  this.name = "";
+  this.pokedex = [];//unlimited
+  this.pokemonOnHand = []//4x
+  this.pic = ""//url
+  this.x = 2//600
+  this.y = 2//600
+  this.turn = true;
+  this.faintedPokemons = [];
+}
+
+Player.prototype = {
+  
+  setPlayersName: function(newName){
+    this.name = newName;
+  }
+
+
+
+};
+
+module.exports = Player;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+var Pokemon = function(pokemonObj){
+  this.name = pokemonObj.name;
+  this.id = pokemonObj.id;
+  this.attack = pokemonObj.attack;
+  this.defense = pokemonObj.defense;
+  this.hp = pokemonObj.hp;
+  this.front_picture = pokemonObj.front_picture;
+  this.back_picture = pokemonObj.back_picture;
+  this.type = pokemonObj.type;
+  this.move = pokemonObj.move;
+  this.fightHp = pokemonObj.fightHp;
+}
+
+module.exports = Pokemon;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
 //// HANDLE MOVEMENT ON MAP ////////////
-var Game = require('./game');
+var Game = __webpack_require__(4);
 
 //// need to require player for coordinates ////////
 var Map = function(pokemonData, Player, Pokemon) {
@@ -317,3 +435,153 @@ var Map = function(pokemonData, Player, Pokemon) {
 };
 
 module.exports = Map;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+var Game = function(data, Player, Pokemon, aButton){
+  console.log('data',data);
+
+  this.unusedPokemon = data;
+  this.player = new Player;
+  this.grassOpponant = new Player;
+  this.gymOpponat1 = new Player;
+  this.gymOpponat2 = new Player;
+
+};
+
+Game.prototype = {
+
+    playerPicksPokemon: function(pokeName){
+      for (var i = 0; i < this.unusedPokemon.length; i++) {
+        if (this.unusedPokemon[i].name === pokeName) {
+          var pickedPokemon = this.unusedPokemon[i];
+          pickedPokemon.fightHp = pickedPokemon.hp
+          this.player.pokemonOnHand.push(pickedPokemon);
+          this.unusedPokemon.splice(i, 1);
+          console.log('i', i);
+        }
+      }
+    },
+
+    populateOpponant: function(opponant, numOfEnemies){
+      for(i = 0; i < numOfEnemies; i++){
+        var takenPokemon = this.unusedPokemon.splice(Math.floor(Math.random()*this.unusedPokemon.length), 1)[0];
+        takenPokemon.fightHp = takenPokemon.hp;
+        opponant.pokemonOnHand.push(takenPokemon);
+      }
+    },
+
+    calcDamage: function(attaker, defender){
+      var base = 20;
+      var bonus = Math.round((attaker.attack - defender.defense)/3);
+      console.log('bonus', bonus);
+      var random = Math.random()*(1.2 - 0.8) + 0.8;
+
+      console.log('rand', random);
+      var damage = Math.round(base * random) + bonus;
+
+      if (damage < 0) {
+        damage = 0;
+      }
+
+      return damage;
+    },
+
+    fight: function(player, opponant, callback) {
+      if (player.turn === true) {
+        var damage = callback(player.pokemonOnHand[0], opponant.pokemonOnHand[0]);
+        console.log('damage', damage);
+        console.log('initial hp', opponant.pokemonOnHand[0].fightHp);
+        opponant.pokemonOnHand[0].fightHp -= damage;
+        if (opponant.pokemonOnHand[0].fightHp <= 0) {
+          opponant.pokemonOnHand[0].fightHp = 0;
+        }
+        console.log('after hp', opponant.pokemonOnHand[0].fightHp);
+        player.turn = false;
+        opponant.turn = true;
+      }
+      else {
+        var damage = callback(opponant.pokemonOnHand[0], player.pokemonOnHand[0]);
+        console.log('damage', damage);
+        console.log('initial hp', player.pokemonOnHand[0].fightHp);
+        player.pokemonOnHand[0].fightHp -= damage;
+        if (player.pokemonOnHand[0].fightHp <= 0) {
+          player.pokemonOnHand[0].fightHp = 0;
+        }
+        console.log('after hp', player.pokemonOnHand[0].fightHp);
+        player.turn = true;
+        opponant.turn = false;
+      }
+
+
+
+    }
+
+  };
+
+
+module.exports = Game;
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var Player = __webpack_require__(0);
+var Pokemon = __webpack_require__(1);
+var Map = __webpack_require__(2);
+var UI = __webpack_require__(3);
+
+var app = function() {
+ 
+  // new UI();
+ 
+
+  var makeRequest = function(url, callback){
+    var request = new XMLHttpRequest();
+    request.open("GET", url);
+    request.onload = callback;
+    request.send();
+  };
+
+  var allPokemon = function(){
+    makeRequest("http://localhost:3000/sourcePokemons", function(){
+      if(this.status !== 200) return;
+        var jsonString = this.responseText;
+        var jsonObject = JSON.parse(jsonString);
+
+
+        var pokemonData = jsonObject;
+        new Map(pokemonData, Player, Pokemon);
+      });
+  }
+
+  allPokemon();
+}
+
+
+
+window.onload = app();
+
+/***/ })
+/******/ ]);
+//# sourceMappingURL=bundle.js.map

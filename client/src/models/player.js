@@ -5,7 +5,8 @@ var Player = function(){
   this.pic = ""//url
   this.x = 2//600
   this.y = 2//600
-
+  this.turn = true;
+  this.faintedPokemons = [];
 }
 
 Player.prototype = {
