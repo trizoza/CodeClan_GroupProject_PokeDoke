@@ -79,7 +79,25 @@ body {
   background-color: white;
 }
 
+#choose_screen {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 580px;
+  height: 460px;
+  background-color: white;
+}
+
 #fight_screen {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 580px;
+  height: 460px;
+  background-color: white;
+}
+
+#home_screen {
   display: block;
   position: absolute;
   z-index: 1;

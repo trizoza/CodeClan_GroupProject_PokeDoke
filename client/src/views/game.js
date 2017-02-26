@@ -24,6 +24,11 @@ Game.prototype = {
     },
 
     populateOpponant: function(opponant, numOfEnemies){
+      ///////////////////////////////////////////
+      //                                       //
+      // MISSING CASE WHEN YOU CAUGHT THEM ALL //        
+      //                                       //
+      ///////////////////////////////////////////
       for(i = 0; i < numOfEnemies; i++){
         var takenPokemon = this.unusedPokemon.splice(Math.floor(Math.random()*this.unusedPokemon.length), 1)[0];
         takenPokemon.fightHp = takenPokemon.hp;
@@ -36,14 +41,11 @@ Game.prototype = {
       var bonus = Math.round((attaker.attack - defender.defense)/3);
       console.log('bonus', bonus);
       var random = Math.random()*(1.2 - 0.8) + 0.8;
-
       console.log('rand', random);
       var damage = Math.round(base * random) + bonus;
-
       if (damage < 0) {
         damage = 0;
       }
-
       return damage;
     },
 
@@ -72,22 +74,25 @@ Game.prototype = {
         player.turn = true;
         opponant.turn = false;
       }
+    },
 
+    checkForFainted: function(player) {
+      if (player.pokemonOnHand[0].fightHp === 0) {
+        var faintedPokemon = player.pokemonOnHand[0];
+        player.faintedPokemons.push(faintedPokemon);
+        player.pokemonOnHand.splice(0, 1);
+      }
+    },
 
-
+    getFaintedPokemon: function(player, opponant) {
+      if (opponant.pokemonOnHand.length === 0) {
+        var faintedPokemon = opponant.faintedPokemons[0];
+        player.pokedex.push(faintedPokemon);
+        opponant.faintedPokemons.splice(0, 1);
+      }
     }
 
   };
 
 
 module.exports = Game;
-
-
-
-
-
-
-
-
-
-
