@@ -1,14 +1,13 @@
 var Player = require('./player');
 var Pokemon = require('./pokemon');
 
-
 var game = function(data){
   console.log('data',data);
 
   var unusedPokemon = data;
   console.log(unusedPokemon);
 
-  var player = new Player;
+  this.player = new Player;
   console.log('player:', player);
 
   var opponant = new Player;
@@ -28,7 +27,7 @@ var game = function(data){
     }
   };
 
-  var populateOpponant = function(opponant, numOfEnemies){
+  this.populateOpponant = function(opponant, numOfEnemies){
     for(i = 0; i <= numOfEnemies; i++){
       var takenPokemon = unusedPokemon.splice(Math.floor(Math.random()*unusedPokemon.length), 1)[0];
       takenPokemon.fightHp = takenPokemon.hp;
