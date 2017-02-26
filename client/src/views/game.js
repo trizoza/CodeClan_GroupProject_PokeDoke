@@ -9,26 +9,21 @@ var Game = function(data, Player, Pokemon){
 
 Game.prototype = {
 
-  sortPokemon: function(unusedPokemon){
-    unusedPokemon.sort(function (a, b) {
-      return parseFloat(a.id) - parseFloat(b.id);
-    })},
-    // console.log('array sorted', unusedPokemon);
-    // console.log('array sorted', unusedPokemon.length);
-
     playerPicksPokemon: function(pokeName){
-      for (var i = 0; i < unusedPokemon.length; i++) {
-        if (unusedPokemon[i].name === pokeName) {
-          player.pokemonOnHand.push(unusedPokemon[i]);
+      for (var i = 0; i < this.unusedPokemon.length; i++) {
+        if (this.unusedPokemon[i].name === pokeName) {
+          this.player.pokemonOnHand.push(this.unusedPokemon[i]);
+          this.unusedPokemon.splice(i, 1);
+          console.log('i', i);
         }
       }
     },
 
     populateOpponant: function(opponant, numOfEnemies){
-      for(i = 0; i <= numOfEnemies; i++){
-        var takenPokemon = unusedPokemon.splice(Math.floor(Math.random()*unusedPokemon.length), 1)[0];
+      for(i = 0; i < numOfEnemies; i++){
+        var takenPokemon = this.unusedPokemon.splice(Math.floor(Math.random()*this.unusedPokemon.length), 1)[0];
         takenPokemon.fightHp = takenPokemon.hp;
-        opponant.pokemonOnHand.push(takenPokemon);
+        this.opponant.pokemonOnHand.push(takenPokemon);
       }
     },
 

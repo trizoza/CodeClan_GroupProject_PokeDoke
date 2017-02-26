@@ -9,9 +9,12 @@ var Player = function(){
 }
 
 Player.prototype = {
-  getPokemon: function(pokemon, source, destination){
-    this.destination.push(source[pokemon]);
+  
+  setPlayersName: function(newName){
+    this.name = newName;
   }
+
+
 
 };
 

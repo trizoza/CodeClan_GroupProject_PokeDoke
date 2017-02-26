@@ -4,8 +4,9 @@ var Game = require('./game');
 //// need to require player for coordinates ////////
 var Map = function(pokemonData, Player, Pokemon) {
   var game = new Game(pokemonData, Player, Pokemon);
-  var canvas = document.querySelector("#map");
-  var context = canvas.getContext('2d');
+  var welcomeScreen = document.querySelector('#welcomeScreen');
+  var mapCanvas = document.querySelector("#map");
+  var context = mapCanvas.getContext('2d');
   var x = 300;
   var y = 200;
   var increment = 10;
@@ -27,6 +28,7 @@ var Map = function(pokemonData, Player, Pokemon) {
   var leftButton = document.querySelector('#left-button');
   var rightButton = document.querySelector('#right-button');
   var aButton = document.querySelector('#a-button');
+  var submitButton = document.querySelector('#submit_name');
 
   upButton.onclick = function(){
     if (y <= 20) {
@@ -106,71 +108,95 @@ var Map = function(pokemonData, Player, Pokemon) {
     x += xInc;
     y += yInc;
     console.log(x,y);
+    checkIfInGrass();
   };
 
   document.onkeydown = function(event) {
     console.log(event.keyCode);
-    console.log(upButton.onclick);
-    if (event.keyCode === 39) {
-      // right
-      if (x >= 560) {
-        moveAsh(0, 0);
+    if (mapCanvas.style.zIndex == 100) {
+
+      if (event.keyCode === 39) {
+        // right
+        if (x >= 560) {
+          moveAsh(0, 0);
+        }
+        else if (x === 340 && 20 <= y && y <= 180) {
+          moveAsh(0, 0);
+        }
+        else{
+          moveAsh(increment, 0);
+        }
       }
-      else if (x === 340 && 20 <= y && y <= 180) {
-        moveAsh(0, 0);
+
+      if (event.keyCode === 37) {
+        // left
+
+        if (x <= 20) {
+          moveAsh(0, 0);
+        }
+        else if (x === 240 && 20 <= y && y <= 180) {
+          moveAsh(0, 0);
+        }
+        else if (x === 170 && 260 <= y && y <= 410) {
+          moveAsh(0, 0);
+        }
+        else{
+          moveAsh(-increment, 0);
+        }
       }
-      else{
-        moveAsh(increment, 0);
+
+      if (event.keyCode === 38) {
+        // up
+
+        if (y <= 20) {
+          moveAsh(0, 0);
+        }
+        else if (y === 420 && 20 <= x && x <= 160) {
+          moveAsh(0, 0);
+        }
+        else if (y === 190 && 20 <= x && x <= 230) {
+          moveAsh(0, 0);
+        }
+        else if (y === 190 && 350 <= x && x <= 560) {
+          moveAsh(0, 0);
+        }
+        else {
+          moveAsh(0, -increment);
+        }
       }
+
+      if (event.keyCode === 40) {
+        // down
+
+        if (y >= 440) {
+          moveAsh(0, 0);
+        }
+        else if (y === 250 && 20 <= x && x <= 160) {
+          moveAsh(0, 0);
+        }
+        else {
+          moveAsh(0, increment);
+        }
+      }
+
+
+
+
+
+
+
+
+
+
     }
-
-    if (event.keyCode === 37) {
-      // left
-      if (x <= 20) {
-        moveAsh(0, 0);
-      }
-      else if (x === 240 && 20 <= y && y <= 180) {
-        moveAsh(0, 0);
-      }
-      else if (x === 170 && 260 <= y && y <= 410) {
-        moveAsh(0, 0);
-      }
-      else{
-        moveAsh(-increment, 0);
-      }
-    }
-
-    if (event.keyCode === 38) {
-      // up
-      if (y <= 20) {
-        moveAsh(0, 0);
-      }
-      else if (y === 420 && 20 <= x && x <= 160) {
-        moveAsh(0, 0);
-      }
-      else if (y === 190 && 20 <= x && x <= 230) {
-        moveAsh(0, 0);
-      }
-      else if (y === 190 && 350 <= x && x <= 560) {
-        moveAsh(0, 0);
-      }
-      else {
-        moveAsh(0, -increment);
-      }
-    }
-
-    if (event.keyCode === 40) {
-      // down
-      if (y >= 440) {
-        moveAsh(0, 0);
-      }
-      else if (y === 250 && 20 <= x && x <= 160) {
-        moveAsh(0, 0);
-      }
-      else {
-        moveAsh(0, increment);
-        console.log(game.calcDamage(game.unusedPokemon[2], game.unusedPokemon[77]));
-
+    
+  };
+  var checkIfInGrass = function() {
+    if (x >= 260 && y >= 280) {
+      var randNum = Math.ceil(Math.random()*(10 - 0));
+      console.log('rand num', randNum);
+      if (randNum === 10) {
+        console.log('you are fucked!!!!');
       }
     }
   };
@@ -233,8 +259,41 @@ var Map = function(pokemonData, Player, Pokemon) {
   }
 
   aButton.onclick = function(){
+    //////// testing //////////
+    // console.log('calc damge', game.calcDamage(game.unusedPokemon[2], game.unusedPokemon[77]));
+    // game.playerPicksPokemon("pikachu");
+    // console.log('player pick pokemon', game.player.pokemonOnHand);
+    // game.populateOpponant(game.opponant, 3);
+    // console.log('oponnant hand', game.opponant.pokemonOnHand);
+    // console.log('oponnant poke name', game.opponant.pokemonOnHand[0].name);
+    // console.log('left pokemon', game.unusedPokemon);
  
-   console.log('aButton has been clicked');
+    console.log('aButton has been clicked');
+  }
+
+  /////////////////////////////////////////////
+  ////////////////// 01 ///////////////////////
+  /////////////////////////////////////////////
+
+  submitButton.onclick = function() {
+    var nameToAdd = document.querySelector('#name_to_add');
+    game.player.setPlayersName(nameToAdd.value);
+    //////
+
+    game.playerPicksPokemon("raichu");
+    console.log('players pokemon', game.player.pokemonOnHand[0].name);
+    game.populateOpponant(game.opponant, 1);
+    console.log('opponants pokemon', game.opponant.pokemonOnHand[0].name);
+
+    toggleViews(welcomeScreen, mapCanvas);
+    console.log('players name', game.player.name);
+  }
+
+
+
+  var toggleViews = function(recentView, nextView) {
+    recentView.style.zIndex = 1;
+    nextView.style.zIndex = 100;
   }
 
   loadCanvas();
