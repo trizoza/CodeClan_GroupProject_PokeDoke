@@ -139,6 +139,9 @@ var Map = function(pokemonData, Player, Pokemon) {
   pavement.src = "/img/pavement.png";
   var upButton = document.querySelector('#up-button');
   var downButton = document.querySelector('#down-button');
+  var leftButton = document.querySelector('#left-button');
+  var rightButton = document.querySelector('#right-button');
+  var aButton = document.querySelector('#a-button');
 
   upButton.onclick = function(){
     if (y <= 20) {
@@ -286,6 +289,68 @@ var Map = function(pokemonData, Player, Pokemon) {
       }
     }
   };
+
+  upButton.onclick = function(){
+    if (y <= 20) {
+      moveAsh(0, 0);
+    }
+    else if (y === 420 && 20 <= x && x <= 160) {
+      moveAsh(0, 0);
+    }
+    else if (y === 190 && 20 <= x && x <= 230) {
+      moveAsh(0, 0);
+    }
+    else if (y === 190 && 350 <= x && x <= 560) {
+      moveAsh(0, 0);
+    }
+    else {
+      moveAsh(0, -increment);
+    }
+  }
+
+  downButton.onclick = function(){
+    if (y >= 440) {
+      moveAsh(0, 0);
+    }
+    else if (y === 250 && 20 <= x && x <= 160) {
+      moveAsh(0, 0);
+    }
+    else {
+      moveAsh(0, increment);
+    }
+  }
+
+  leftButton.onclick = function(){
+    if (x <= 20) {
+      moveAsh(0, 0);
+    }
+    else if (x === 240 && 20 <= y && y <= 180) {
+      moveAsh(0, 0);
+    }
+    else if (x === 170 && 260 <= y && y <= 410) {
+      moveAsh(0, 0);
+    }
+    else{
+      moveAsh(-increment, 0);
+    }
+  }
+
+  rightButton.onclick = function(){
+    if (x >= 560) {
+      moveAsh(0, 0);
+    }
+    else if (x === 340 && 20 <= y && y <= 180) {
+      moveAsh(0, 0);
+    }
+    else{
+      moveAsh(increment, 0);
+    }
+  }
+
+  aButton.onclick = function(){
+ 
+   console.log('aButton has been clicked');
+  }
 
   loadCanvas();
 
@@ -470,12 +535,6 @@ module.exports = Game;
 
 
                                     // } 
-
-
-
-
-
-
 
 
 

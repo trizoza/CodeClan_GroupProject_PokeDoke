@@ -62,8 +62,6 @@ body {
   background-color: transparent;
 }
 
-
-
 #console {
   position: absolute;
   bottom: 200px;
@@ -72,6 +70,18 @@ body {
   height: 460px;
 }
 
+#welcomeScreen {
+  display: block;
+  position: absolute;
+  z-index: 100;
+  width: 580px;
+  height: 460px;
+  background-color: white;
+}
+
 #map {
+  display: block;
+  position: absolute;
+  z-index: 1;
   background-color: orange;
 }

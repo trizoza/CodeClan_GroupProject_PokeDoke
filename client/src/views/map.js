@@ -24,6 +24,9 @@ var Map = function(pokemonData, Player, Pokemon) {
   pavement.src = "/img/pavement.png";
   var upButton = document.querySelector('#up-button');
   var downButton = document.querySelector('#down-button');
+  var leftButton = document.querySelector('#left-button');
+  var rightButton = document.querySelector('#right-button');
+  var aButton = document.querySelector('#a-button');
 
   upButton.onclick = function(){
     if (y <= 20) {
@@ -201,6 +204,7 @@ var Map = function(pokemonData, Player, Pokemon) {
       moveAsh(0, increment);
     }
   }
+
   leftButton.onclick = function(){
     if (x <= 20) {
       moveAsh(0, 0);
@@ -215,6 +219,7 @@ var Map = function(pokemonData, Player, Pokemon) {
       moveAsh(-increment, 0);
     }
   }
+
   rightButton.onclick = function(){
     if (x >= 560) {
       moveAsh(0, 0);
@@ -228,14 +233,7 @@ var Map = function(pokemonData, Player, Pokemon) {
   }
 
   aButton.onclick = function(){
-   if (canvas.style.display==="none"){
-     canvas.style.display="";
-     // fightInGrassPage.style.display ="none";
-   }
-   else{
-     canvas.style.display = "none";
-     // fightInGrassPage.style.dipslay = "";
-   }
+ 
    console.log('aButton has been clicked');
   }
 
