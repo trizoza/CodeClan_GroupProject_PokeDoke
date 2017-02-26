@@ -1,7 +1,8 @@
 //// HANDLE MOVEMENT ON MAP ////////////
-
+var game = require('../models/game');
 //// need to require player for coordinates ////////
-var Map = function() {
+var Map = function(data) {
+  game(data)
   var canvas = document.querySelector("#map");
   var context = canvas.getContext('2d');
   var x = 300;
@@ -22,6 +23,8 @@ var Map = function() {
   pavement.src = "/img/pavement.png";
   var upButton = document.querySelector('#up-button');
   var downButton = document.querySelector('#down-button');
+
+
 
   upButton.onclick = function(){
     if (y <= 20) {
@@ -172,6 +175,8 @@ var Map = function() {
       }
       else {
         moveAsh(0, increment);
+        game.populateOpponant(game.opponant, 10);
+        console.log("connects from map!!!!!! if adds 10", game.opponant.pokemonOnHand);
       }
     }
   };
