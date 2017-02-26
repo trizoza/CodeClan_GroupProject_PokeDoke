@@ -63,54 +63,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
-
-var Player = function(){
-  this.name = "";
-  this.pokedex = [];//unlimited
-  this.pokemonOnHand = []//4x
-  this.pic = ""//url
-  this.x = 2//600
-  this.y = 2//600
-
-}
-
-Player.prototype = {
-  getPokemon: function(pokemon, source, destination){
-    this.destination.push(source[pokemon]);
-  }
-
-};
-
-module.exports = Player;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-var Pokemon = function(pokemonObj){
-  this.name = pokemonObj.name;
-  this.id = pokemonObj.id;
-  this.attack = pokemonObj.attack;
-  this.defense = pokemonObj.defense;
-  this.hp = pokemonObj.hp;
-  this.front_picture = pokemonObj.front_picture;
-  this.back_picture = pokemonObj.back_picture;
-  this.type = pokemonObj.type;
-  this.move = pokemonObj.move;
-  this.fightHp = pokemonObj.fightHp;
-}
-
-module.exports = Pokemon;
-
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //// HANDLE MOVEMENT ON MAP ////////////
@@ -359,10 +316,74 @@ var Map = function(pokemonData, Player, Pokemon) {
 module.exports = Map;
 
 /***/ }),
-/* 3 */
+/* 1 */
 /***/ (function(module, exports) {
 
 
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var Player = __webpack_require__(3);
+var Pokemon = __webpack_require__(5);
+var Map = __webpack_require__(0);
+var UI = __webpack_require__(1);
+
+var app = function() {
+ 
+  // new UI();
+ 
+
+  var makeRequest = function(url, callback){
+    var request = new XMLHttpRequest();
+    request.open("GET", url);
+    request.onload = callback;
+    request.send();
+  };
+
+  var allPokemon = function(){
+    makeRequest("http://localhost:3000/sourcePokemons", function(){
+      if(this.status !== 200) return;
+        var jsonString = this.responseText;
+        var jsonObject = JSON.parse(jsonString);
+
+
+        var pokemonData = jsonObject;
+        new Map(pokemonData, Player, Pokemon);
+      });
+  }
+
+  allPokemon();
+}
+
+
+
+window.onload = app();
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var Player = function(){
+  this.name = "";
+  this.pokedex = [];//unlimited
+  this.pokemonOnHand = []//4x
+  this.pic = ""//url
+  this.x = 2//600
+  this.y = 2//600
+
+}
+
+Player.prototype = {
+  getPokemon: function(pokemon, source, destination){
+    this.destination.push(source[pokemon]);
+  }
+
+};
+
+module.exports = Player;
 
 /***/ }),
 /* 4 */
@@ -540,44 +561,23 @@ module.exports = Game;
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-
-var Player = __webpack_require__(0);
-var Pokemon = __webpack_require__(1);
-var Map = __webpack_require__(2);
-var UI = __webpack_require__(3);
-
-var app = function() {
- 
-  // new UI();
- 
-
-  var makeRequest = function(url, callback){
-    var request = new XMLHttpRequest();
-    request.open("GET", url);
-    request.onload = callback;
-    request.send();
-  };
-
-  var allPokemon = function(){
-    makeRequest("http://localhost:3000/sourcePokemons", function(){
-      if(this.status !== 200) return;
-        var jsonString = this.responseText;
-        var jsonObject = JSON.parse(jsonString);
-
-
-        var pokemonData = jsonObject;
-        new Map(pokemonData, Player, Pokemon);
-      });
-  }
-
-  allPokemon();
+var Pokemon = function(pokemonObj){
+  this.name = pokemonObj.name;
+  this.id = pokemonObj.id;
+  this.attack = pokemonObj.attack;
+  this.defense = pokemonObj.defense;
+  this.hp = pokemonObj.hp;
+  this.front_picture = pokemonObj.front_picture;
+  this.back_picture = pokemonObj.back_picture;
+  this.type = pokemonObj.type;
+  this.move = pokemonObj.move;
+  this.fightHp = pokemonObj.fightHp;
 }
 
+module.exports = Pokemon;
 
-
-window.onload = app();
 
 /***/ })
 /******/ ]);
