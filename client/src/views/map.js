@@ -3,6 +3,7 @@ var Game = require('./game');
 
 //// need to require player for coordinates ////////
 var Map = function(pokemonData, Player, Pokemon) {
+
   var game = new Game(pokemonData, Player, Pokemon, aButton);
   var welcomeScreen = document.querySelector('#welcomeScreen');
   var chooseScreen = document.querySelector('#choose_screen');
@@ -34,7 +35,6 @@ var Map = function(pokemonData, Player, Pokemon) {
   var nameSubmitButton = document.querySelector('#submit_name');
 
   loadCanvas = function() {
-
     pavement.onload = function() {
       context.drawImage(this, 0, 0, 580, 460);
       ash.onload = function() {
@@ -53,7 +53,6 @@ var Map = function(pokemonData, Player, Pokemon) {
       drawMap();
       context.drawImage(ash, x - 20, y - 20, ashWidth, ashHeight);
     }; 
-    
   };
 
   drawMap = function() {
@@ -164,6 +163,16 @@ var Map = function(pokemonData, Player, Pokemon) {
         }
       }
 
+      //////////// ENTER HOME ////////////////////////////////////////////////////////////////////////
+      if (event.keyCode === 72) {
+        // h
+        if (x === 50 && y === 420) {
+          toggleViews(mapCanvas, homeScreen);
+          atHome();
+        }
+
+      }
+
 
     }
     
@@ -220,25 +229,28 @@ var Map = function(pokemonData, Player, Pokemon) {
 }
 ///////////// GRASS FIGHT OVER /////////////////////////////////////////////////////////////////
 
-//////////// ENTER HOME ////////////////////////////////////////////////////////////////////////
-
-if (x === 50 || x === 60 && y === 420) {
-  if (event.keyCode === 72) {
-    //
-    
 
 
-
-
-
-
-
-
-
+//////////// AT HOME ////////////////////////////////////////////////////////////////////////
+var welcomeAtHome = document.createElement('p');
+welcomeAtHome.innerText = "Welcome home " + game.player.name + "! Here you can take a rest and manage your Pokémon. Once you feel strong enough again. Press A to hit the world!";
+homeScreen.appendChild(welcomeAtHome);
+var atHome = function() {
+  
+  aButton.onclick = function() {
+    if (homeScreen.style.zIndex == 100) {
+      toggleViews(homeScreen, mapCanvas);
+      console.log('zIndex', mapCanvas.style.zIndex);
+      console.log('aButton has been clicked in house');
+    }
   }
-}  
+};
 
-//////////// LEAVE HOME ////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 
 //////////////// BUTTONS ///////////////////////////////////////////////////////////////////////
   upButton.onclick = function(){
@@ -299,6 +311,16 @@ if (x === 50 || x === 60 && y === 420) {
   }
 
   aButton.onclick = function(){
+
+    ////////////// ENTER HOME ///////////////////
+    if (mapCanvas.style.zIndex == 100) {
+      if (x === 50 && y === 420) {
+        toggleViews(mapCanvas, homeScreen);
+        atHome();
+        console.log('zIndex', mapCanvas.style.zIndex);
+      }
+    }
+    
     //////// testing //////////
     // console.log('calc damge', game.calcDamage(game.unusedPokemon[2], game.unusedPokemon[77]));
     // game.playerPicksPokemon("pikachu");
@@ -308,7 +330,7 @@ if (x === 50 || x === 60 && y === 420) {
     // console.log('oponnant poke name', game.opponant.pokemonOnHand[0].name);
     // console.log('left pokemon', game.unusedPokemon);
  
-    console.log('aButton has been clicked');
+    console.log('aButton has been clicked on map canvas');
   }
 
   /////////// 01 WELCOME SCREEN ////////////////  
