@@ -30,6 +30,7 @@ Game.prototype = {
       //                                       //
       ///////////////////////////////////////////
       for(i = 0; i < numOfEnemies; i++){
+        console.log(this);
         var takenPokemon = this.unusedPokemon.splice(Math.floor(Math.random()*this.unusedPokemon.length), 1)[0];
         takenPokemon.fightHp = takenPokemon.hp;
         opponant.pokemonOnHand.push(takenPokemon);
@@ -43,8 +44,8 @@ Game.prototype = {
       var random = Math.random()*(1.2 - 0.8) + 0.8;
       console.log('rand', random);
       var damage = Math.round(base * random) + bonus;
-      if (damage < 0) {
-        damage = 0;
+      if (damage < 1) {
+        damage = 1;
       }
       return damage;
     },
@@ -93,7 +94,14 @@ Game.prototype = {
           console.log('players pokedex', player.pokedex);
           console.log('players hand', player.pokemonOnHand);
         }
+        this.setTurnTrue(player, this.grassOpponant);
       }
+      console.log('fainted - populate')
+     
+      if(opponant.pokemonOnHand.length == 0){
+        this.populateOpponant(opponant, 1);
+      }
+
     },
 
     revivePokemons: function(player) {

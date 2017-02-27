@@ -219,11 +219,9 @@ var Map = function(pokemonData, Player, Pokemon) {
             game.getFaintedPokemon(game.player, game.grassOpponant);
             console.log('player', game.player)
             toggleViews(fightScreen, mapCanvas);
-            game.populateOpponant(game.grassOpponant, 1);
+            
           }
-          if (game.grassOpponant.pokemonOnHand.length === 0) {
-            game.setTurnTrue(game.player, game.grassOpponant);
-          }
+       
         }
       }
     }
@@ -358,7 +356,7 @@ var atHome = function() {
       pok1img.src = game.player.pokemonOnHand[1].front_picture;
       handShowContainer.appendChild(pok1img);
       pok2img.src = game.player.pokemonOnHand[2].front_picture;
-      handShowContainer.appendChild(pok2mg);
+      handShowContainer.appendChild(pok2img);
       pok3img.src = game.player.pokemonOnHand[3].front_picture;
       handShowContainer.appendChild(pok3img);
       pok4img.src = game.player.pokemonOnHand[4].front_picture;
@@ -372,7 +370,7 @@ var atHome = function() {
       pok1img.src = game.player.pokemonOnHand[1].front_picture;
       handShowContainer.appendChild(pok1img);
       pok2img.src = game.player.pokemonOnHand[2].front_picture;
-      handShowContainer.appendChild(pok2mg);
+      handShowContainer.appendChild(pok2img);
       pok3img.src = game.player.pokemonOnHand[3].front_picture;
       handShowContainer.appendChild(pok3img);
       pok4img.src = game.player.pokemonOnHand[4].front_picture;
@@ -384,7 +382,7 @@ var atHome = function() {
       pok1img.src = game.player.pokemonOnHand[1].front_picture;
       handShowContainer.appendChild(pok1img);
       pok2img.src = game.player.pokemonOnHand[2].front_picture;
-      handShowContainer.appendChild(pok2mg);
+      handShowContainer.appendChild(pok2img);
       pok3img.src = game.player.pokemonOnHand[3].front_picture;
       handShowContainer.appendChild(pok3img);
     }
@@ -394,7 +392,7 @@ var atHome = function() {
       pok1img.src = game.player.pokemonOnHand[1].front_picture;
       handShowContainer.appendChild(pok1img);
       pok2img.src = game.player.pokemonOnHand[2].front_picture;
-      handShowContainer.appendChild(pok2mg);
+      handShowContainer.appendChild(pok2img);
     }
     else if (game.player.pokemonOnHand.length === 2) {
       pok0img.src = game.player.pokemonOnHand[0].front_picture;
@@ -443,22 +441,6 @@ var atHome = function() {
       game.player.pokemonOnHand.splice(5, 1);
     }
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   /////////////// AT HOME END OF POKEMON ON HAND /////////////////////////////////
 
   ///////////////////////// LEAVE HOME ////////////////////////////////////
@@ -467,6 +449,7 @@ var atHome = function() {
       toggleViews(homeScreen, mapCanvas);
       console.log('zIndex', mapCanvas.style.zIndex);
       console.log('aButton has been clicked in house');
+
     }
   }
 };
