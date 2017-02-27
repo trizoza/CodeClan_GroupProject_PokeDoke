@@ -545,7 +545,7 @@ var Map = function(pokemonData, Player, Pokemon) {
 
         game.fight(game.player, fightOpponant, game.calcDamage);
         
-        fightScreen.innerHTML = "<img src="+ game.player.pokemonOnHand[0].front_picture+"></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img src="+ fightOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+fightOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+fightOpponant.pokemonOnHand[0].fightHp+"</p>";
+        fightScreen.innerHTML = "<img id='playerPokemon' src="+ game.player.pokemonOnHand[0].back_picture+ "></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img id='opponantPokemon' src="+ fightOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+fightOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+fightOpponant.pokemonOnHand[0].fightHp+"</p> <img id='fight_textbox' src='/img/message.png'></img>";
 
         game.checkForFainted(game.player);
         game.checkForFainted(fightOpponant);
