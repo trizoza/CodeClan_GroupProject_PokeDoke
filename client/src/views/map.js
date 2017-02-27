@@ -45,10 +45,33 @@ var Map = function(pokemonData, Player, Pokemon) {
       };
       gym.onload = function() {
         context.drawImage(this, 0, 0, 220, 170);
-        context.drawImage(this, 320, 0, 220, 170);
+        context.drawImage(this, 360, 0, 220, 170);
       };
       grass.onload = function() {
         context.drawImage(this, 540, 400, 40, 60);
+        context.drawImage(grass, 500, 400, 40, 60);
+        context.drawImage(grass, 460, 400, 40, 60);
+        context.drawImage(grass, 420, 400, 40, 60);
+        context.drawImage(grass, 380, 400, 40, 60);
+        context.drawImage(grass, 340, 400, 40, 60);
+        context.drawImage(grass, 300, 400, 40, 60);
+        context.drawImage(grass, 260, 400, 40, 60);
+        context.drawImage(grass, 540, 340, 40, 60);
+        context.drawImage(grass, 500, 340, 40, 60);
+        context.drawImage(grass, 460, 340, 40, 60);
+        context.drawImage(grass, 420, 340, 40, 60);
+        context.drawImage(grass, 380, 340, 40, 60);
+        context.drawImage(grass, 340, 340, 40, 60);
+        context.drawImage(grass, 300, 340, 40, 60);
+        context.drawImage(grass, 260, 340, 40, 60);
+        context.drawImage(grass, 540, 280, 40, 60);
+        context.drawImage(grass, 500, 280, 40, 60);
+        context.drawImage(grass, 460, 280, 40, 60);
+        context.drawImage(grass, 420, 280, 40, 60);
+        context.drawImage(grass, 380, 280, 40, 60);
+        context.drawImage(grass, 340, 280, 40, 60);
+        context.drawImage(grass, 300, 280, 40, 60);
+        context.drawImage(grass, 260, 280, 40, 60);
       };
       drawMap();
       context.drawImage(ash, x - 20, y - 20, ashWidth, ashHeight);
@@ -196,7 +219,7 @@ var Map = function(pokemonData, Player, Pokemon) {
         if (game.player.pokemonOnHand.length >= 1 && game.grassOpponant.pokemonOnHand.length >= 1) {
 
           toggleViews(mapCanvas, fightScreen);
-          fightScreen.innerHTML = "<img src="+ game.player.pokemonOnHand[0].front_picture+"></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img src="+ game.grassOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+game.grassOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+game.grassOpponant.pokemonOnHand[0].fightHp+"</p>";
+          fightScreen.innerHTML = "<img id='playerPokemon' src="+ game.player.pokemonOnHand[0].back_picture+ "></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img id='opponantPokemon' src="+ game.grassOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+game.grassOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+game.grassOpponant.pokemonOnHand[0].fightHp+"</p> <img id='fight_textbox' src='/img/message.png'></img>";
 
         }
 
@@ -208,7 +231,7 @@ var Map = function(pokemonData, Player, Pokemon) {
 
             game.fight(game.player, game.grassOpponant, game.calcDamage);
             
-            fightScreen.innerHTML = "<img src="+ game.player.pokemonOnHand[0].front_picture+"></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img src="+ game.grassOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+game.grassOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+game.grassOpponant.pokemonOnHand[0].fightHp+"</p>";
+            fightScreen.innerHTML = "<img id='playerPokemon' src="+ game.player.pokemonOnHand[0].back_picture+ "></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img id='opponantPokemon' src="+ game.grassOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+game.grassOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+game.grassOpponant.pokemonOnHand[0].fightHp+"</p> <img id='fight_textbox' src='/img/message.png'></img>";
 
             game.checkForFainted(game.player);
             game.checkForFainted(game.grassOpponant);
