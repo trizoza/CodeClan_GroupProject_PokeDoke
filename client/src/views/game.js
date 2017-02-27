@@ -97,7 +97,7 @@ Game.prototype = {
         }
         this.setTurnTrue(player, this.grassOpponant);
       }
-      console.log('fainted - populate')
+      console.log('fainted - populate');
      
       if(opponant.pokemonOnHand.length == 0){
         this.populateOpponant(opponant, 1);
@@ -116,6 +116,11 @@ Game.prototype = {
       }
       if (player.pokedex.length > 0) {
         for (var each of player.pokedex) {
+          each.fightHp = each.hp;
+        }
+      }
+      if (player.pokemonOnHand.length > 0) {
+        for (var each of player.pokemonOnHand) {
           each.fightHp = each.hp;
         }
       }
