@@ -88,14 +88,8 @@ Game.prototype = {
       if (opponant.pokemonOnHand.length === 0) {
         for (var i = 0; i < opponant.faintedPokemons.length; i++) {
           var pokemonToBeMoved = opponant.faintedPokemons[i];
-          if (player.pokemonOnHand.length < 6) {
-            player.pokemonOnHand.push(pokemonToBeMoved);
-            opponant.faintedPokemons.splice(0, 1);
-          }
-          else {
-            player.pokedex.push(pokemonToBeMoved);
-            opponant.faintedPokemons.splice(0, 1);
-          }
+          player.pokedex.push(pokemonToBeMoved);
+          opponant.faintedPokemons.splice(0, 1);
           console.log('players pokedex', player.pokedex);
           console.log('players hand', player.pokemonOnHand);
         }
@@ -112,6 +106,11 @@ Game.prototype = {
       for (var each of player.pokedex) {
         each.fightHp = each.hp;
       }
+    },
+
+    setTurnTrue: function(player, opponant) {
+      player.turn = true;
+      opponant.turn = false;
     }
 
   };
