@@ -207,8 +207,8 @@ var Map = function(pokemonData, Player, Pokemon) {
     if (game.player.pokemonOnHand.length >= 1 && opponant.pokemonOnHand.length >= 1) {
       console.log(opponant);
       toggleViews(mapCanvas, fightScreen);
-     fightScreen.innerHTML = "<img id='playerPokemon' src="+ game.player.pokemonOnHand[0].back_picture+ "></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img id='opponantPokemon' src="+ opponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+opponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+opponant.pokemonOnHand[0].fightHp+"</p> <img id='fight_textbox' src='/img/message.png'></img>";
-
+     fightScreen.innerHTML = "<img id='playerPokemon' src="+ game.player.pokemonOnHand[0].back_picture+ "></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img id='opponantPokemon' src="+ opponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+opponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+opponant.pokemonOnHand[0].fightHp+"</p><img id='fight_textbox' src='/img/message.png'></img>";
+      fightScreen.innerHTML += "<p id='move_text'>Your "+game.player.pokemonOnHand[0].name+" fights against "+opponant.pokemonOnHand[0].name+"!</p>";
     }
   }
 
@@ -547,6 +547,13 @@ var Map = function(pokemonData, Player, Pokemon) {
         
         fightScreen.innerHTML = "<img id='playerPokemon' src="+ game.player.pokemonOnHand[0].back_picture+ "></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img id='opponantPokemon' src="+ fightOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+fightOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+fightOpponant.pokemonOnHand[0].fightHp+"</p> <img id='fight_textbox' src='/img/message.png'></img>";
 
+        if (game.player.turn == true) {
+         fightScreen.innerHTML += "<p id='move_text'>Your "+game.player.pokemonOnHand[0].name+" used "+game.player.pokemonOnHand[0].move+" against "+fightOpponant.pokemonOnHand[0].name+"!</p>";
+        } 
+        else {
+         fightScreen.innerHTML += "<p id='move_text'>"+fightOpponant.pokemonOnHand[0].name+" used "+fightOpponant.pokemonOnHand[0].move+" against your"+game.player.pokemonOnHand[0].name+"!</p>";
+        }
+
         game.checkForFainted(game.player);
         game.checkForFainted(fightOpponant);
 
@@ -563,10 +570,8 @@ var Map = function(pokemonData, Player, Pokemon) {
 
     }
 
-
     ///////////// IN HOME /////////////////
-
-
+    
     else if (homeScreen.style.zIndex == 100) {
       toggleViews(homeScreen, mapCanvas);
       console.log('zIndex of home', mapCanvas.style.zIndex);

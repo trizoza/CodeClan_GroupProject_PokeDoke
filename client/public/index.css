@@ -146,6 +146,13 @@ body {
   left: 360px;
 }
 
+#move_text {
+  position: absolute;
+  left: 30px;
+  bottom: 100px;
+  width: 550px;
+}
+
 #opponant_pok_hp{
   position: absolute;
   left:360px;
