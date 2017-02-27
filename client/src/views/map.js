@@ -232,11 +232,117 @@ var Map = function(pokemonData, Player, Pokemon) {
 
 
 //////////// AT HOME ////////////////////////////////////////////////////////////////////////
-var welcomeAtHome = document.createElement('p');
-welcomeAtHome.innerText = "Welcome home " + game.player.name + "! Here you can take a rest and manage your Pokémon. Once you feel strong enough again. Press A to hit the world!";
-homeScreen.appendChild(welcomeAtHome);
+
 var atHome = function() {
+  ////////////// REVIVE FAINTED POKEMONS //////////////////////////////////////////////////////
+  game.revivePokemons(game.player);
   
+  //////////////// SETUP HTML //////////////////////////////////////////////////////////////////
+  homeScreen.innerHTML = "";
+  var welcomeAtHome = document.createElement('p');
+  welcomeAtHome.innerText = "Welcome home " + game.player.name + "! Here you can take a rest and let your Pokémon rest too. Once you leave home, your Pokémon will be again strong and healthy. Press A to hit the world!";
+  homeScreen.appendChild(welcomeAtHome);
+
+
+  //////////////////////// POKEDEX SELECTION ///////////////////////////////////////////////////
+  var selectionContainer = document.createElement('div');
+  homeScreen.appendChild(selectionContainer);
+  var pokedexSelection = document.createElement('select');
+  if (game.player.pokedex.length >=1) {
+    selectionContainer.innerHTML = "";
+    var selectionAdvice = document.createElement('p');
+    selectionAdvice.innerText = "Choose a Pokémon from Pokedex";
+    selectionContainer.appendChild(selectionAdvice);
+    selectionContainer.appendChild(pokedexSelection);
+    var predefinedPokeOption = document.createElement('option');
+    predefinedPokeOption.innerText = "...";
+    pokedexSelection.innerHTML = "";
+    pokedexSelection.appendChild(predefinedPokeOption);
+    for(var each of game.player.pokedex) {
+      var pokeOption = document.createElement('option');
+      pokeOption.innerText = each.name;
+      pokedexSelection.appendChild(pokeOption);
+    }
+  }
+  else {
+    selectionContainer.innerHTML = "";
+    var selectionAdvice = document.createElement('p');
+    selectionAdvice.innerText = "Pokedex empty";
+    selectionContainer.appendChild(selectionAdvice);
+  }
+
+  var pokemonDetails = document.createElement('div');
+  homeScreen.appendChild(pokemonDetails);
+
+  var handleSelectChange = function(event) {
+    pokemonDetails.innerHTML="";
+    var p = document.createElement('p');
+    var img = document.createElement('img');
+    var nameOfSelectedPokemon = "";
+    for(var each of game.player.pokedex) {
+      if (each.name === this.value) {
+        p.innerText += "Name: " + each.name;
+        nameOfSelectedPokemon = each.name;
+        p.innerText += "\nHP: " + each.hp;
+        p.innerText += "\nAttack: " + each.attack;
+        p.innerText += "\nDefense: " + each.defense;
+        img.src = each.front_picture;
+      }
+    }
+    pokemonDetails.appendChild(img);
+    pokemonDetails.appendChild(p);
+    var addToHandButton = document.createElement('button');
+    pokemonDetails.appendChild(addToHandButton);
+
+    var handleButtonClick = function(){
+      for(var i = 0; i < game.player.pokedex.length; i++) {
+        if (game.player.pokedex[i].name === nameOfSelectedPokemon) {
+          if (game.player.pokemonOnHand.length < 6) {
+            game.player.pokemonOnHand.push(game.player.pokedex[i]);
+            game.player.pokedex.splice(i, 1);
+            pokemonDetails.innerHTML="";
+          }
+        }
+      }
+      if (game.player.pokedex.length >=1) {
+        selectionContainer.innerHTML = "";
+        var selectionAdvice = document.createElement('p');
+        selectionAdvice.innerText = "Choose a Pokémon from Pokedex";
+        selectionContainer.appendChild(selectionAdvice);
+        selectionContainer.appendChild(pokedexSelection);
+        var predefinedPokeOption = document.createElement('option');
+        predefinedPokeOption.innerText = "...";
+        pokedexSelection.innerHTML = "";
+        pokedexSelection.appendChild(predefinedPokeOption);
+        for(var each of game.player.pokedex) {
+          var pokeOption = document.createElement('option');
+          pokeOption.innerText = each.name;
+          pokedexSelection.appendChild(pokeOption);
+        }
+      }
+      else {
+        selectionContainer.innerHTML = "";
+        var selectionAdvice = document.createElement('p');
+        selectionAdvice.innerText = "Pokedex empty";
+        selectionContainer.appendChild(selectionAdvice);
+      }
+    }
+
+
+    addToHandButton.onclick = handleButtonClick;
+    console.log('event', event);
+  }
+
+  pokedexSelection.onchange = handleSelectChange;
+   
+
+
+
+
+
+
+
+  ///////////////////////// LEAVE HOME ////////////////////////////////////
   aButton.onclick = function() {
     if (homeScreen.style.zIndex == 100) {
       toggleViews(homeScreen, mapCanvas);
@@ -367,7 +473,7 @@ var atHome = function() {
      chooseScreen.appendChild(squirtlePic);
 
      bulbasaurPic.onclick = function() {
-       game.playerPicksPokemon("bulbasaur");
+       game.playerPicksPokemon("blastoise");
        console.log('sweet you have choosen bulbi! its gonna be muddy', game.player.pokemonOnHand[0]);
        toggleViews(chooseScreen, mapCanvas);
      }

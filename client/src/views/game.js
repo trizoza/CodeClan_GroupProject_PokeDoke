@@ -90,6 +90,18 @@ Game.prototype = {
         player.pokedex.push(faintedPokemon);
         opponant.faintedPokemons.splice(0, 1);
       }
+    },
+
+    revivePokemons: function(player) {
+      for (var i = 0; i < player.faintedPokemons.length; i++) {
+        player.faintedPokemons[i].fightHp = player.faintedPokemons[i].hp;
+        var revivedPokemon = player.faintedPokemons[i];
+        player.pokemonOnHand.push(revivedPokemon);
+      }
+      player.faintedPokemons.splice(0, player.faintedPokemons.length);
+      for (var each of player.pokedex) {
+        each.fightHp = each.hp;
+      }
     }
 
   };
