@@ -6,6 +6,7 @@ var Game = function(data, Player, Pokemon){
   this.grassOpponant = new Player;
   this.gymOpponant1 = new Player;
   this.gymOpponant2 = new Player;
+ 
 
 };
 
