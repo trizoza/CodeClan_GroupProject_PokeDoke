@@ -1,11 +1,11 @@
-var Game = function(data, Player, Pokemon, aButton){
+var Game = function(data, Player, Pokemon){
   console.log('data',data);
 
   this.unusedPokemon = data;
   this.player = new Player;
   this.grassOpponant = new Player;
-  this.gymOpponat1 = new Player;
-  this.gymOpponat2 = new Player;
+  this.gymOpponant1 = new Player;
+  this.gymOpponant2 = new Player;
 
 };
 
@@ -86,9 +86,19 @@ Game.prototype = {
 
     getFaintedPokemon: function(player, opponant) {
       if (opponant.pokemonOnHand.length === 0) {
-        var faintedPokemon = opponant.faintedPokemons[0];
-        player.pokedex.push(faintedPokemon);
-        opponant.faintedPokemons.splice(0, 1);
+        for (var i = 0; i < opponant.faintedPokemons.length; i++) {
+          var pokemonToBeMoved = opponant.faintedPokemons[i];
+          if (player.pokemonOnHand.length < 6) {
+            player.pokemonOnHand.push(pokemonToBeMoved);
+            opponant.faintedPokemons.splice(0, 1);
+          }
+          else {
+            player.pokedex.push(pokemonToBeMoved);
+            opponant.faintedPokemons.splice(0, 1);
+          }
+          console.log('players pokedex', player.pokedex);
+          console.log('players hand', player.pokemonOnHand);
+        }
       }
     },
 

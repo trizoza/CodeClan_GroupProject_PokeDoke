@@ -4,7 +4,7 @@ var Game = require('./game');
 //// need to require player for coordinates ////////
 var Map = function(pokemonData, Player, Pokemon) {
 
-  var game = new Game(pokemonData, Player, Pokemon, aButton);
+  var game = new Game(pokemonData, Player, Pokemon);
   var welcomeScreen = document.querySelector('#welcomeScreen');
   var chooseScreen = document.querySelector('#choose_screen');
   var fightScreen = document.querySelector('#fight_screen');
@@ -196,7 +196,7 @@ var Map = function(pokemonData, Player, Pokemon) {
         if (game.player.pokemonOnHand.length >= 1 && game.grassOpponant.pokemonOnHand.length >= 1) {
 
           toggleViews(mapCanvas, fightScreen);
-          fightScreen.innerHTML = "<p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><p id='opponant_pok_name'>"+game.grassOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+game.grassOpponant.pokemonOnHand[0].fightHp+"</p>";
+          fightScreen.innerHTML = "<img src="+ game.player.pokemonOnHand[0].front_picture+"></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img src="+ game.grassOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+game.grassOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+game.grassOpponant.pokemonOnHand[0].fightHp+"</p>";
 
         }
 
@@ -208,7 +208,7 @@ var Map = function(pokemonData, Player, Pokemon) {
 
             game.fight(game.player, game.grassOpponant, game.calcDamage);
             
-            fightScreen.innerHTML = "<p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><p id='opponant_pok_name'>"+game.grassOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+game.grassOpponant.pokemonOnHand[0].fightHp+"</p>";
+            fightScreen.innerHTML = "<img src="+ game.player.pokemonOnHand[0].front_picture+"></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img src="+ game.grassOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+game.grassOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+game.grassOpponant.pokemonOnHand[0].fightHp+"</p>";
 
             game.checkForFainted(game.player);
             game.checkForFainted(game.grassOpponant);
@@ -220,7 +220,10 @@ var Map = function(pokemonData, Player, Pokemon) {
             console.log('player', game.player)
             toggleViews(fightScreen, mapCanvas);
             game.populateOpponant(game.grassOpponant, 1);
-
+          }
+          if (game.grassOpponant.pokemonOnHand.length === 0) {
+            game.player.turn = true;
+            game.grassOpponant.turn = false;
           }
         }
       }
@@ -449,7 +452,6 @@ var atHome = function() {
     console.log('opponants pokemon', game.grassOpponant.pokemonOnHand[0]);
 
     toggleViews(welcomeScreen, chooseScreen);
-    console.log('players name', game.player.name);
 
      /////////// 02 CHOOSE SCREEN ////////////////  
      var welcomeQuote = document.createElement('p');

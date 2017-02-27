@@ -121,7 +121,7 @@ var Game = __webpack_require__(4);
 //// need to require player for coordinates ////////
 var Map = function(pokemonData, Player, Pokemon) {
 
-  var game = new Game(pokemonData, Player, Pokemon, aButton);
+  var game = new Game(pokemonData, Player, Pokemon);
   var welcomeScreen = document.querySelector('#welcomeScreen');
   var chooseScreen = document.querySelector('#choose_screen');
   var fightScreen = document.querySelector('#fight_screen');
@@ -313,7 +313,7 @@ var Map = function(pokemonData, Player, Pokemon) {
         if (game.player.pokemonOnHand.length >= 1 && game.grassOpponant.pokemonOnHand.length >= 1) {
 
           toggleViews(mapCanvas, fightScreen);
-          fightScreen.innerHTML = "<p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><p id='opponant_pok_name'>"+game.grassOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+game.grassOpponant.pokemonOnHand[0].fightHp+"</p>";
+          fightScreen.innerHTML = "<img src="+ game.player.pokemonOnHand[0].front_picture+"></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img src="+ game.grassOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+game.grassOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+game.grassOpponant.pokemonOnHand[0].fightHp+"</p>";
 
         }
 
@@ -325,7 +325,7 @@ var Map = function(pokemonData, Player, Pokemon) {
 
             game.fight(game.player, game.grassOpponant, game.calcDamage);
             
-            fightScreen.innerHTML = "<p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><p id='opponant_pok_name'>"+game.grassOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+game.grassOpponant.pokemonOnHand[0].fightHp+"</p>";
+            fightScreen.innerHTML = "<img src="+ game.player.pokemonOnHand[0].front_picture+"></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img src="+ game.grassOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+game.grassOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+game.grassOpponant.pokemonOnHand[0].fightHp+"</p>";
 
             game.checkForFainted(game.player);
             game.checkForFainted(game.grassOpponant);
@@ -337,7 +337,10 @@ var Map = function(pokemonData, Player, Pokemon) {
             console.log('player', game.player)
             toggleViews(fightScreen, mapCanvas);
             game.populateOpponant(game.grassOpponant, 1);
-
+          }
+          if (game.grassOpponant.pokemonOnHand.length === 0) {
+            game.player.turn = true;
+            game.grassOpponant.turn = false;
           }
         }
       }
@@ -566,7 +569,6 @@ var atHome = function() {
     console.log('opponants pokemon', game.grassOpponant.pokemonOnHand[0]);
 
     toggleViews(welcomeScreen, chooseScreen);
-    console.log('players name', game.player.name);
 
      /////////// 02 CHOOSE SCREEN ////////////////  
      var welcomeQuote = document.createElement('p');
@@ -637,14 +639,14 @@ module.exports = Map;
 /* 4 */
 /***/ (function(module, exports) {
 
-var Game = function(data, Player, Pokemon, aButton){
+var Game = function(data, Player, Pokemon){
   console.log('data',data);
 
   this.unusedPokemon = data;
   this.player = new Player;
   this.grassOpponant = new Player;
-  this.gymOpponat1 = new Player;
-  this.gymOpponat2 = new Player;
+  this.gymOpponant1 = new Player;
+  this.gymOpponant2 = new Player;
 
 };
 
@@ -725,9 +727,19 @@ Game.prototype = {
 
     getFaintedPokemon: function(player, opponant) {
       if (opponant.pokemonOnHand.length === 0) {
-        var faintedPokemon = opponant.faintedPokemons[0];
-        player.pokedex.push(faintedPokemon);
-        opponant.faintedPokemons.splice(0, 1);
+        for (var i = 0; i < opponant.faintedPokemons.length; i++) {
+          var pokemonToBeMoved = opponant.faintedPokemons[i];
+          if (player.pokemonOnHand.length < 6) {
+            player.pokemonOnHand.push(pokemonToBeMoved);
+            opponant.faintedPokemons.splice(0, 1);
+          }
+          else {
+            player.pokedex.push(pokemonToBeMoved);
+            opponant.faintedPokemons.splice(0, 1);
+          }
+          console.log('players pokedex', player.pokedex);
+          console.log('players hand', player.pokemonOnHand);
+        }
       }
     },
 
