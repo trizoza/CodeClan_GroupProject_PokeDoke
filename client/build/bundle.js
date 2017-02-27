@@ -66,8 +66,9 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 5:
 /***/ (function(module, exports) {
 
 var Player = function(){
@@ -954,5 +955,6 @@ var app = function() {
 window.onload = app();
 
 /***/ })
-/******/ ]);
+
+/******/ });
 //# sourceMappingURL=bundle.js.map
