@@ -17,9 +17,13 @@ body {
 
 p{
   margin: auto;
-  width: 50%;
   padding: 10px;
 }
+
+#nameQuestion{
+  width: 50%;
+}
+
 
 #logo{
   display: block;
@@ -206,21 +210,22 @@ p{
 
 #opponant_pok_name{
   position: absolute;
-  left: 360px;
+  left: 352px;
+  top: 13px;
+  font-size: 20px;
 }
 
 #move_text {
   position: absolute;
   left: 30px;
   bottom: 100px;
-  width: 550px;
+  width: 450px;
 }
 
 #opponant_pok_hp{
   position: absolute;
   left:352px;
   top: 49px;
-  font-size: 20px;
 }
 
 #home_screen {
