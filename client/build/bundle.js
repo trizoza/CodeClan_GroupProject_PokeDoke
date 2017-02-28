@@ -309,7 +309,7 @@ var Map = function(pokemonData, Player, Pokemon) {
       //////////// ENTER HOME ////////////////////////////////////////////////////////////////////////
       if (event.keyCode === 72) {
         // h
-        if (x === 50 && y === 420) {
+        if ((x === 50 || x===60) && y === 420) {
           toggleViews(mapCanvas, homeScreen);
           atHome();
         }
