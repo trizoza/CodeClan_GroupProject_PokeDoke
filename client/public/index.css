@@ -412,7 +412,21 @@ p{
   line-height: 1.5;
 }
 
+#simonSpeech{
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
 #brockCraig{
+  height: 44%;
+  width: 33%;
+  position: absolute;
+  left:180px;
+}
+
+#simonPic{
   height: 44%;
   width: 33%;
   position: absolute;

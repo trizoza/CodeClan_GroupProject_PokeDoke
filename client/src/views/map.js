@@ -10,6 +10,7 @@ var Map = function(pokemonData, Player, Pokemon) {
   var fightScreen = document.querySelector('#fight_screen');
   var homeScreen = document.querySelector('#home_screen');
   var craigScreen = document.querySelector('#craig_screen');
+  var simonScreen = document.querySelector('#simonScreen')
   var mapCanvas = document.querySelector("#map");
 
   var context = mapCanvas.getContext('2d');
@@ -537,9 +538,14 @@ var Map = function(pokemonData, Player, Pokemon) {
   //////////// END OF AT HOME ////////////////////////////////////////////////////////////////////////
 
 
-  //////////////////////// WITH CRAIG ////////////////////////////////////////////
+  //////////////////////// WITH CRAIG or SIMON ////////////////////////////////////////////
   var withCraig = function() {
     craigScreen.innerHTML = "<p id='craigSpeech'>Hi "+game.player.name+"! My name is CRIG MORTOB!  Be careful... the Meadows are full of wild Pokémon and there also some tough trainers in our gyms!</p><img src='./img/brockCraig.png' id='brockCraig'>";
+  }
+
+  var withSimon = function() {
+    if()
+    simonScreen.innerHTML = "<p id='simonSpeech'>Hi "+game.player.name+"! My name is CRIG MORTOB!  Be careful... the Meadows are full of wild Pokémon and there also some tough trainers in our gyms!</p><img src='./img/brockCraig.png' id='brockCraig'>";
   }
 
   ///////////// GENERATE MINI PICTURES OF POKEMON IN FIGHT ////////////////////////////////////////
@@ -740,17 +746,25 @@ var Map = function(pokemonData, Player, Pokemon) {
         atHome();
         console.log('zIndex of mapCanvas', mapCanvas.style.zIndex);
       }
-      ////////////// AROUND CRAIG ///////////////
+      ////////////// AROUND CRAIG OR SIMON ///////////////
       if (x === 240 && y === 340) {
         toggleViews(mapCanvas, craigScreen);
         withCraig();
       }
+      if (x === 490  && y === 190 ) {
+        toggleViews(mapCanvas, simonScreen);
+        withSimon();
+      }
     }
 
-    /////////////// WITH CRAIG //////////////////
+    /////////////// WITH CRAIG OR SIMON //////////////////
     else if (craigScreen.style.zIndex == 100) {
       toggleViews(craigScreen, mapCanvas);
     }
+    else if (simonScreen.style.zIndex == 100) {
+      toggleViews(craigScreen, mapCanvas);
+    }
+
 
 
 
