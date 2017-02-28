@@ -325,6 +325,22 @@ p{
  border-left: 3px solid #CCCCCC;
 }
 
+#bulbasaur:hover{
+ width: 180px;
+ height: 180px;
+ position: relative;
+ left: 10px;
+ border: solid white;
+ background: url(https://lh3.googleusercontent.com/-E9V-RjhfoKI/AAAAAAAAAAI/AAAAAAAAAAA/-Zb5Yxd6eDU/photo.jpg);
+ background-size: 30%;
+ background-repeat: no-repeat;
+ background-color: rgba(0, 128, 0, 0.68);
+ border-top: 3px solid #CCCCCC;
+ border-right: 3px solid #333333;
+ border-bottom: 3px solid #333333;
+ border-left: 3px solid #CCCCCC;
+}
+
 #charmander{
   width: 180px;
   height: 180px;
@@ -334,6 +350,22 @@ p{
   background-image: url(https://lh6.googleusercontent.com/-4wLBAIT9uSg/AAAAAAAAAAI/AAAAAAAAAG4/UhVUIYIz4r8/photo.jpg);
   background-size: 30%;
   background-color: rgba(255, 165, 0, 0.51);
+  background-repeat: no-repeat;
+  border-top: 3px solid #CCCCCC;
+  border-right: 3px solid #333333;
+  border-bottom: 3px solid #333333;
+  border-left: 3px solid #CCCCCC;
+}
+
+#charmander:hover{
+  width: 180px;
+  height: 180px;
+  position: relative;
+  left: 10px;
+  border: solid white;
+  background-image: url(https://lh6.googleusercontent.com/-4wLBAIT9uSg/AAAAAAAAAAI/AAAAAAAAAG4/UhVUIYIz4r8/photo.jpg);
+  background-size: 30%;
+  background-color: rgba(255, 165, 0, 0.91);
   background-repeat: no-repeat;
   border-top: 3px solid #CCCCCC;
   border-right: 3px solid #333333;
@@ -355,4 +387,34 @@ p{
   border-right: 3px solid #333333;
   border-bottom: 3px solid #333333;
   border-left: 3px solid #CCCCCC;
+}
+
+#squirtle:hover{
+  width: 180px;
+  height: 180px;
+  position: relative;
+  left: 10px;
+  border: solid white;
+  background: url(http://orig12.deviantart.net/3c0e/f/2016/137/c/a/water_type_energy_symbol_by_maskadra42-d606iej.png);
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-color: dodgerblue;
+  border-top: 3px solid #CCCCCC;
+  border-right: 3px solid #333333;
+  border-bottom: 3px solid #333333;
+  border-left: 3px solid #CCCCCC;
+}
+
+#craigSpeech{
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+#brockCraig{
+  height: 44%;
+  width: 33%;
+  position: absolute;
+  left:180px;
 }

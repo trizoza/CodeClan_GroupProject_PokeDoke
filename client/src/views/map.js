@@ -321,7 +321,7 @@ var Map = function(pokemonData, Player, Pokemon) {
     //////////////// SETUP HTML //////////////////////////////////////////////////////////////////
     homeScreen.innerHTML = "";
     var welcomeAtHome = document.createElement('p');
-    welcomeAtHome.innerText = "Welcome home " + game.player.name + "! Here you can take a rest and let your Pokémon rest too. Once you leave home, your Pokémon will be again strong and healthy. Press A to hit the world!";
+    welcomeAtHome.innerText = "Welcome home " + game.player.name +"! Here you can take a rest and let your Pokémon rest too. Once you leave home, your Pokémon will be again strong and healthy. Press A to hit the world!";
     homeScreen.appendChild(welcomeAtHome);
     //////////////////////// POKEDEX SELECTION ///////////////////////////////////////////////////
     var selectionContainer = document.createElement('div');
@@ -539,7 +539,7 @@ var Map = function(pokemonData, Player, Pokemon) {
 
   //////////////////////// WITH CRAIG ////////////////////////////////////////////
   var withCraig = function() {
-    craigScreen.innerHTML = "<p>Hi "+game.player.name+"! My name is Craig! Welcome to Edinburgh, but be careful, the Meadows are full of wild Pokémon and there also some tough trainers in our gyms!</p>";
+    craigScreen.innerHTML = "<p id='craigSpeech'>Hi "+game.player.name+"! My name is CRIG MORTOB!  Be careful... the Meadows are full of wild Pokémon and there also some tough trainers in our gyms!</p><img src='./img/brockCraig.png' id='brockCraig'>";
   }
 
   ///////////// GENERATE MINI PICTURES OF POKEMON IN FIGHT ////////////////////////////////////////
@@ -774,7 +774,7 @@ nameSubmitButton.onclick = function() {
   /////////// 02 CHOOSE SCREEN ////////////////  
   var welcomeQuote = document.createElement('p');
   chooseScreen.innerHTML = "";
-  welcomeQuote.innerText = "Hey " + game.player.name + "! Choose your Pokémon!"
+  welcomeQuote.innerText = "Hey " + game.player.name + "! Choose your Pokémon, then... Go Away!"
   chooseScreen.appendChild(welcomeQuote);
 
   welcomeQuote.id ='welcomeQuote';
