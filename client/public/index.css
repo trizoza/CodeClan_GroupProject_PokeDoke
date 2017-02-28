@@ -168,6 +168,15 @@ body {
   background-color: white;
 }
 
+#craig_screen {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 580px;
+  height: 460px;
+  background-image: url("/img/pavement.png");
+}
+
 #map {
   display: block;
   position: absolute;

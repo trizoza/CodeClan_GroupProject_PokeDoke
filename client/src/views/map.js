@@ -9,6 +9,7 @@ var Map = function(pokemonData, Player, Pokemon) {
   var chooseScreen = document.querySelector('#choose_screen');
   var fightScreen = document.querySelector('#fight_screen');
   var homeScreen = document.querySelector('#home_screen');
+  var craigScreen = document.querySelector('#craig_screen');
   var mapCanvas = document.querySelector("#map");
 
   var context = mapCanvas.getContext('2d');
@@ -515,6 +516,10 @@ var Map = function(pokemonData, Player, Pokemon) {
   //////////// END OF AT HOME ////////////////////////////////////////////////////////////////////////
 
 
+  //////////////////////// WITH CRAIG ////////////////////////////////////////////
+  var withCraig = function() {
+    craigScreen.innerHTML = "<p>Hi "+game.player.name+"! My name is Craig! Welcome to Edinburgh, but be careful, the Meadows are full of wild Pokémon and there also some tough trainers in our gyms!</p>";
+  }
 
 
 
@@ -633,8 +638,22 @@ var Map = function(pokemonData, Player, Pokemon) {
         atHome();
         console.log('zIndex of mapCanvas', mapCanvas.style.zIndex);
       }
-    } 
+      ////////////// AROUND CRAIG ///////////////
+      if (x === 240 && y === 340) {
+        toggleViews(mapCanvas, craigScreen);
+        withCraig();
+      }
+    }
+
+    /////////////// WITH CRAIG //////////////////
+    else if (craigScreen.style.zIndex == 100) {
+      toggleViews(craigScreen, mapCanvas);
+    }
+
   }
+  ////////////// END OF ABUTTON //////////////////////
+
+
 
   /////////// 01 WELCOME SCREEN ////////////////  
   nameSubmitButton.onclick = function() {
