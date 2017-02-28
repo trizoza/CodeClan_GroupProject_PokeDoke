@@ -12,8 +12,8 @@ var Map = function(pokemonData, Player, Pokemon) {
   var mapCanvas = document.querySelector("#map");
 
   var context = mapCanvas.getContext('2d');
-  var x = 300;
-  var y = 200;
+  var x = 60;
+  var y = 420;
   var increment = 10;
   var ash = document.createElement('img');
   ash.src = "/img/ash.png";
