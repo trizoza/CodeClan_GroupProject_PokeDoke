@@ -703,6 +703,13 @@ nameSubmitButton.onclick = function() {
   var welcomeQuote = document.createElement('p');
   welcomeQuote.innerText = "Hey " + game.player.name + "! Choose your Pokémon!"
   chooseScreen.appendChild(welcomeQuote);
+  welcomeQuote.id ='welcomeQuote';
+
+  var matthewPic = document.createElement('img');
+  matthewPic.id ='mattOak';
+  matthewPic.src = './img/matt.png'
+  chooseScreen.appendChild(matthewPic);
+
 
   var bulbasaurPic = document.createElement('img');
   bulbasaurPic.id = 'bulbasaur';
@@ -715,6 +722,7 @@ nameSubmitButton.onclick = function() {
   var squirtlePic = document.createElement('img');
   squirtlePic.id = 'squirtle';
   squirtlePic.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png';
+
 
   chooseScreen.appendChild(bulbasaurPic);
   chooseScreen.appendChild(charmanderPic);
