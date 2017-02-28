@@ -129,11 +129,17 @@ var Map = function(pokemonData, Player, Pokemon) {
   var mapCanvas = document.querySelector("#map");
 
   var context = mapCanvas.getContext('2d');
-  var x = 300;
-  var y = 200;
+  var x = 80;
+  var y = 440;
   var increment = 10;
-  var ash = document.createElement('img');
-  ash.src = "/img/ash.png";
+  var ashDown = document.createElement('img');
+  ashDown.src = "/img/ash_down.png";
+  var ashUp = document.createElement('img');
+  ashUp.src = "/img/ash_up.png";
+  var ashRight = document.createElement('img');
+  ashRight.src = "/img/ash_right.png";
+  var ashLeft = document.createElement('img');
+  ashLeft.src = "/img/ash_left.png";
   var ashWidth = 40;
   var ashHeight = ashWidth;
   var house = document.createElement('img');
@@ -144,6 +150,8 @@ var Map = function(pokemonData, Player, Pokemon) {
   grass.src = "/img/grass.png";
   var pavement = document.createElement('img');
   pavement.src = "/img/pavement.png";
+  var craig = document.createElement('img');
+  craig.src = "img/craig.png";
   var upButton = document.querySelector('#up-button');
   var downButton = document.querySelector('#down-button');
   var leftButton = document.querySelector('#left-button');
@@ -155,8 +163,20 @@ var Map = function(pokemonData, Player, Pokemon) {
   loadCanvas = function() {
     pavement.onload = function() {
       context.drawImage(this, 0, 0, 580, 460);
-      ash.onload = function() {
+      ashDown.onload = function() {
         context.drawImage(this, x - 20, y - 20, ashWidth, ashHeight);
+      };
+      ashUp.onload = function() {
+        context.drawImage(this, 1000, 1000, ashWidth, ashHeight);
+      };
+      ashLeft.onload = function() {
+        context.drawImage(this, 1000, 1000, ashWidth, ashHeight);
+      };
+      ashRight.onload = function() {
+        context.drawImage(this, 1000, 1000, ashWidth, ashHeight);
+      };
+      craig.onload = function() {
+        context.drawImage(this, 220, 280, ashWidth, ashHeight);
       };
       house.onload = function() {
         context.drawImage(this, 0, 270, 150, 130);
@@ -192,7 +212,7 @@ var Map = function(pokemonData, Player, Pokemon) {
         context.drawImage(grass, 260, 280, 40, 60);
       };
       drawMap();
-      context.drawImage(ash, x - 20, y - 20, ashWidth, ashHeight);
+      context.drawImage(ashDown, x - 20, y - 20, ashWidth, ashHeight);
     }; 
   };
 
@@ -225,11 +245,12 @@ var Map = function(pokemonData, Player, Pokemon) {
     context.drawImage(grass, 340, 280, 40, 60);
     context.drawImage(grass, 300, 280, 40, 60);
     context.drawImage(grass, 260, 280, 40, 60);
+    context.drawImage(craig, 220, 280, ashWidth, ashHeight);
   };
 
-  var moveAsh = function(xInc, yInc) {
+  var moveAsh = function(directionPic, xInc, yInc) {
     drawMap();
-    context.drawImage(ash, x - 20 + xInc, y - 20 + yInc, ashWidth, ashHeight);
+    context.drawImage(directionPic, x - 20 + xInc, y - 20 + yInc, ashWidth, ashHeight);
     x += xInc;
     y += yInc;
     console.log(x,y);
@@ -243,13 +264,16 @@ var Map = function(pokemonData, Player, Pokemon) {
       if (event.keyCode === 39) {
         // right
         if (x >= 560) {
-          moveAsh(0, 0);
+          moveAsh(ashRight, 0, 0);
         }
         else if (x === 340 && 20 <= y && y <= 180) {
-          moveAsh(0, 0);
+          moveAsh(ashRight, 0, 0);
+        }
+        else if (x === 200 && 270 <= y && y <= 330) {
+          moveAsh(ashRight, 0, 0);
         }
         else{
-          moveAsh(increment, 0);
+          moveAsh(ashRight, increment, 0);
         }
       }
 
@@ -257,16 +281,19 @@ var Map = function(pokemonData, Player, Pokemon) {
         // left
 
         if (x <= 20) {
-          moveAsh(0, 0);
+          moveAsh(ashLeft, 0, 0);
         }
         else if (x === 240 && 20 <= y && y <= 180) {
-          moveAsh(0, 0);
+          moveAsh(ashLeft, 0, 0);
         }
         else if (x === 170 && 260 <= y && y <= 410) {
-          moveAsh(0, 0);
+          moveAsh(ashLeft, 0, 0);
+        }
+        else if (x === 280 && 270 <= y && y <= 330) {
+          moveAsh(ashLeft, 0, 0);
         }
         else{
-          moveAsh(-increment, 0);
+          moveAsh(ashLeft, -increment, 0);
         }
       }
 
@@ -274,19 +301,22 @@ var Map = function(pokemonData, Player, Pokemon) {
         // up
 
         if (y <= 20) {
-          moveAsh(0, 0);
+          moveAsh(ashUp, 0, 0);
         }
         else if (y === 420 && 20 <= x && x <= 160) {
-          moveAsh(0, 0);
+          moveAsh(ashUp, 0, 0);
         }
         else if (y === 190 && 20 <= x && x <= 230) {
-          moveAsh(0, 0);
+          moveAsh(ashUp, 0, 0);
         }
         else if (y === 190 && 350 <= x && x <= 560) {
-          moveAsh(0, 0);
+          moveAsh(ashUp, 0, 0);
+        }
+        else if (y === 340 && 210 <= x && x <= 270) {
+          moveAsh(ashUp, 0, 0);
         }
         else {
-          moveAsh(0, -increment);
+          moveAsh(ashUp, 0, -increment);
         }
       }
 
@@ -294,13 +324,16 @@ var Map = function(pokemonData, Player, Pokemon) {
         // down
 
         if (y >= 440) {
-          moveAsh(0, 0);
+          moveAsh(ashDown, 0, 0);
         }
         else if (y === 250 && 20 <= x && x <= 160) {
-          moveAsh(0, 0);
+          moveAsh(ashDown, 0, 0);
+        }
+        else if (y === 260 && 210 <= x && x <= 270) {
+          moveAsh(ashDown, 0, 0);
         }
         else {
-          moveAsh(0, increment);
+          moveAsh(ashDown, 0, increment);
         }
       }
 
@@ -607,58 +640,58 @@ var Map = function(pokemonData, Player, Pokemon) {
   //////////////// BUTTONS ///////////////////////////////////////////////////////////////////////
   upButton.onclick = function(){
     if (y <= 20) {
-      moveAsh(0, 0);
+      moveAsh(ashUp, 0, 0);
     }
     else if (y === 420 && 20 <= x && x <= 160) {
-      moveAsh(0, 0);
+      moveAsh(ashUp, 0, 0);
     }
     else if (y === 190 && 20 <= x && x <= 230) {
-      moveAsh(0, 0);
+      moveAsh(ashUp, 0, 0);
     }
     else if (y === 190 && 350 <= x && x <= 560) {
-      moveAsh(0, 0);
+      moveAsh(ashUp, 0, 0);
     }
     else {
-      moveAsh(0, -increment);
+      moveAsh(ashUp, 0, -increment);
     }
   }
 
   downButton.onclick = function(){
     if (y >= 440) {
-      moveAsh(0, 0);
+      moveAsh(ashDown, 0, 0);
     }
     else if (y === 250 && 20 <= x && x <= 160) {
-      moveAsh(0, 0);
+      moveAsh(ashDown, 0, 0);
     }
     else {
-      moveAsh(0, increment);
+      moveAsh(ashDown, 0, increment);
     }
   }
 
   leftButton.onclick = function(){
     if (x <= 20) {
-      moveAsh(0, 0);
+      moveAsh(ashLeft, 0, 0);
     }
     else if (x === 240 && 20 <= y && y <= 180) {
-      moveAsh(0, 0);
+      moveAsh(ashLeft, 0, 0);
     }
     else if (x === 170 && 260 <= y && y <= 410) {
-      moveAsh(0, 0);
+      moveAsh(ashLeft, 0, 0);
     }
     else{
-      moveAsh(-increment, 0);
+      moveAsh(ashLeft, -increment, 0);
     }
   }
 
   rightButton.onclick = function(){
     if (x >= 560) {
-      moveAsh(0, 0);
+      moveAsh(ashRight, 0, 0);
     }
     else if (x === 340 && 20 <= y && y <= 180) {
-      moveAsh(0, 0);
+      moveAsh(ashRight, 0, 0);
     }
     else{
-      moveAsh(increment, 0);
+      moveAsh(ashRight, increment, 0);
     }
   }
 
