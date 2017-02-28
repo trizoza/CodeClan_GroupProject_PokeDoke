@@ -209,6 +209,13 @@ p{
   left: 360px;
 }
 
+#move_text {
+  position: absolute;
+  left: 30px;
+  bottom: 100px;
+  width: 550px;
+}
+
 #opponant_pok_hp{
   position: absolute;
   left:352px;
@@ -223,6 +230,15 @@ p{
   width: 580px;
   height: 460px;
   background-color: white;
+}
+
+#craig_screen {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 580px;
+  height: 460px;
+  background-image: url("/img/pavement.png");
 }
 
 #map {
