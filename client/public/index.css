@@ -24,6 +24,12 @@ p{
   width: 50%;
 }
 
+#welcomeQuote{
+  display:block;
+  margin-top: 10px;
+  text-align: center;
+}
+
 
 #logo{
   display: block;
@@ -248,9 +254,105 @@ p{
   background-image: url("/img/pavement.png");
 }
 
+#mattOak{
+  height: 44%;
+  width: 33%;
+  display: block;
+  margin:auto;
+}
+
 #map {
   display: block;
   position: absolute;
   z-index: 1;
   background-color: orange;
+}
+
+.minipic_on_hand {
+  display: inline-block;
+  margin: 2px;
+  width: 45px;
+  height: 45px;
+  border-radius: 22.5px;
+  background-color: lightgray;
+}
+
+.minipic_fainted {
+  display: inline-block;
+  margin: 2px;
+  width: 45px;
+  height: 45px;
+  border-radius: 22.5px;
+  filter: grayscale(100%);
+  background-color: gray;
+}
+
+.player_div {
+  display: block;
+  position: absolute;
+  width: 290px;
+  height: 49px;
+  top: 100px;
+  left: 0;
+  background-image: url("/img/villainbar.png");
+  background-size: 100% 100%;
+}
+
+.opponant_div {
+  display: block;
+  position: absolute;
+  width: 280px;
+  height: 49px;
+  top: 0;
+  left: 290px;
+  background-image: url("/img/herobar.png");
+  background-size:100% 100%;
+}
+
+#bulbasaur{
+ width: 180px;
+ height: 180px;
+ position: relative;
+ left: 10px;
+ border: solid white;
+ background: url(https://lh3.googleusercontent.com/-E9V-RjhfoKI/AAAAAAAAAAI/AAAAAAAAAAA/-Zb5Yxd6eDU/photo.jpg);
+ background-size: 30%;
+ background-repeat: no-repeat;
+ background-color: rgba(0, 128, 0, 0.28);
+ border-top: 3px solid #CCCCCC;
+ border-right: 3px solid #333333;
+ border-bottom: 3px solid #333333;
+ border-left: 3px solid #CCCCCC;
+}
+
+#charmander{
+  width: 180px;
+  height: 180px;
+  position: relative;
+  left: 10px;
+  border: solid white;
+  background-image: url(https://lh6.googleusercontent.com/-4wLBAIT9uSg/AAAAAAAAAAI/AAAAAAAAAG4/UhVUIYIz4r8/photo.jpg);
+  background-size: 30%;
+  background-color: rgba(255, 165, 0, 0.51);
+  background-repeat: no-repeat;
+  border-top: 3px solid #CCCCCC;
+  border-right: 3px solid #333333;
+  border-bottom: 3px solid #333333;
+  border-left: 3px solid #CCCCCC;
+}
+
+#squirtle{
+  width: 180px;
+  height: 180px;
+  position: relative;
+  left: 10px;
+  border: solid white;
+  background: url(http://orig12.deviantart.net/3c0e/f/2016/137/c/a/water_type_energy_symbol_by_maskadra42-d606iej.png);
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-color: rgba(173, 216, 230, 0.71);
+  border-top: 3px solid #CCCCCC;
+  border-right: 3px solid #333333;
+  border-bottom: 3px solid #333333;
+  border-left: 3px solid #CCCCCC;
 }
