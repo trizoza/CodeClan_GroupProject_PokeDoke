@@ -10,7 +10,8 @@ var Map = function(pokemonData, Player, Pokemon) {
   var fightScreen = document.querySelector('#fight_screen');
   var homeScreen = document.querySelector('#home_screen');
   var craigScreen = document.querySelector('#craig_screen');
-  var simonScreen = document.querySelector('#simonScreen')
+  var simonScreen = document.querySelector('#simon_screen');
+  var zsoltScreen = document.querySelector('#zsolt_screen')
   var mapCanvas = document.querySelector("#map");
 
   var context = mapCanvas.getContext('2d');
@@ -544,8 +545,21 @@ var Map = function(pokemonData, Player, Pokemon) {
   }
 
   var withSimon = function() {
-    if()
-    simonScreen.innerHTML = "<p id='simonSpeech'>Hi "+game.player.name+"! My name is CRIG MORTOB!  Be careful... the Meadows are full of wild Pokémon and there also some tough trainers in our gyms!</p><img src='./img/brockCraig.png' id='brockCraig'>";
+    if(game.gymOpponant2.pokemonOnHand.length > 0){
+      simonScreen.innerHTML = "<p id='simonSpeech'>Morning guys! My Name is SIMON. Step inside and I will take you on with my grassy friends!</p><img src='./img/brockCraig.png' id='brockCraig'>";
+    }
+    else{
+      simonScreen.innerHTML = "<p id='simonSpeech'> Wow, you guys are talented! Here is a badge for yourselves!</p><img src='./img/earthBadge.png' id='brockCraig'>";
+    }
+  }
+
+  var withZsolt = function() {
+    if(game.gymOpponant1.pokemonOnHand.length > 0){
+      zsoltScreen.innerHTML = "<p id='zsoltSpeech'>HELLO!!! My Name is ZSOLT. Fight my electric buddies and feel the ZSOLTAGE!!!</p><img src='./img/brockCraig.png' id='brockCraig'>";
+    }
+    else{
+      zsoltScreen.innerHTML = "<p id='zsoltSpeech'> Wow, you are beautiful people! Take this badge, you earned it!</p><img src='./img/thunderBadge.png' id='brockCraig'>";
+    }
   }
 
   ///////////// GENERATE MINI PICTURES OF POKEMON IN FIGHT ////////////////////////////////////////
@@ -741,19 +755,23 @@ var Map = function(pokemonData, Player, Pokemon) {
 
       /////////////////////////////////////////////////////
 
-      if (x === 50 && y === 420) {
+      else if (x === 50 && y === 420) {
         toggleViews(mapCanvas, homeScreen);
         atHome();
         console.log('zIndex of mapCanvas', mapCanvas.style.zIndex);
       }
-      ////////////// AROUND CRAIG OR SIMON ///////////////
-      if (x === 240 && y === 340) {
+      ////////////// AROUND CRAIG OR SIMON OR ZSOLT ///////////////
+      else if (x === 240 && y === 340) {
         toggleViews(mapCanvas, craigScreen);
         withCraig();
       }
-      if (x === 490  && y === 190 ) {
+      else if (x === 490  && y === 190 ) {
         toggleViews(mapCanvas, simonScreen);
         withSimon();
+      }
+      else if (x === 130  && y === 190 ) {
+        toggleViews(mapCanvas, zsoltScreen);
+        withZsolt();
       }
     }
 
@@ -762,11 +780,11 @@ var Map = function(pokemonData, Player, Pokemon) {
       toggleViews(craigScreen, mapCanvas);
     }
     else if (simonScreen.style.zIndex == 100) {
-      toggleViews(craigScreen, mapCanvas);
+      toggleViews(simonScreen, mapCanvas);
     }
-
-
-
+    else if (zsoltScreen.style.zIndex == 100) {
+      toggleViews(zsoltScreen, mapCanvas);
+    }
 
   }
   ////////////// END OF ABUTTON //////////////////////

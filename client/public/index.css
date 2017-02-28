@@ -254,6 +254,24 @@ p{
   background-image: url("/img/pavement.png");
 }
 
+#simon_screen {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 580px;
+  height: 460px;
+  background-image: url("/img/pavement.png");
+}
+
+#zsolt_screen {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 580px;
+  height: 460px;
+  background-image: url("/img/pavement.png");
+}
+
 #mattOak{
   height: 44%;
   width: 33%;
@@ -413,6 +431,13 @@ p{
 }
 
 #simonSpeech{
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+#zsoltSpeech{
   margin-left: 10px;
   margin-right: 10px;
   font-size: 20px;
