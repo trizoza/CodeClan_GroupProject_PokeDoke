@@ -10,6 +10,7 @@ var Map = function(pokemonData, Player, Pokemon) {
   var fightScreen = document.querySelector('#fight_screen');
   var homeScreen = document.querySelector('#home_screen');
   var craigScreen = document.querySelector('#craig_screen');
+  var beingAttackedScreen = document.querySelector('#being_attacked_screen');
   var mapCanvas = document.querySelector("#map");
 
   var context = mapCanvas.getContext('2d');
@@ -252,6 +253,10 @@ var Map = function(pokemonData, Player, Pokemon) {
     }
   }
 
+  var generateBeingAttackedScreen = function() {
+    beingAttackedScreen.innerHTML = "<p>you are attacked</p>";
+  }
+
 
   ///////////// GRASS FIGHT ON /////////////////////////////////////////////////////////////////
   var checkIfInGrass = function() {
@@ -265,7 +270,19 @@ var Map = function(pokemonData, Player, Pokemon) {
         console.log('you are being attacked');
         aCount = 1;
         fightOpponant = game.grassOpponant;
-        initiateFight(fightOpponant);
+        toggleViews(mapCanvas, beingAttackedScreen);
+
+
+
+
+        generateBeingAttackedScreen();
+
+
+
+
+        //////// this needs to be removed ////////
+        // initiateFight(fightOpponant);
+        ////////////////////////////////////////
         console.log(fightOpponant);
         
 
@@ -597,6 +614,12 @@ var Map = function(pokemonData, Player, Pokemon) {
       initiateFight(fightOpponant);
     }
     ////////////////////////////////////////////
+
+    //////////////// IN BEING ATTACKED SCREEN ///////////////
+    if (beingAttackedScreen.style.zIndex == 100 ) {
+      toggleViews(beingAttackedScreen, fightScreen);
+      initiateFight(fightOpponant);
+    }
 
     ///////////////////IN FIGHT////////////////////////
 
