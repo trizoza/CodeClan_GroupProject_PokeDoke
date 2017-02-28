@@ -13,8 +13,10 @@ var Map = function(pokemonData, Player, Pokemon) {
   var mapCanvas = document.querySelector("#map");
 
   var context = mapCanvas.getContext('2d');
+
   var x = 80;
   var y = 440;
+
   var increment = 10;
   var ashDown = document.createElement('img');
   ashDown.src = "/img/ash_down.png";
@@ -43,6 +45,7 @@ var Map = function(pokemonData, Player, Pokemon) {
   var aButton = document.querySelector('#a-button');
   var nameSubmitButton = document.querySelector('#submit_name');
   var fightOpponant;
+  var aCount = 0;
 
   loadCanvas = function() {
     pavement.onload = function() {
@@ -138,6 +141,7 @@ var Map = function(pokemonData, Player, Pokemon) {
     x += xInc;
     y += yInc;
     console.log(x,y);
+    aCount = 0;
     checkIfInGrass();
   };
 
@@ -224,7 +228,7 @@ var Map = function(pokemonData, Player, Pokemon) {
       //////////// ENTER HOME ////////////////////////////////////////////////////////////////////////
       if (event.keyCode === 72) {
         // h
-        if (x === 50 && y === 420) {
+        if ((x === 50 || x===60) && y === 420) {
           toggleViews(mapCanvas, homeScreen);
           atHome();
         }
@@ -241,8 +245,10 @@ var Map = function(pokemonData, Player, Pokemon) {
     if (game.player.pokemonOnHand.length >= 1 && opponant.pokemonOnHand.length >= 1) {
       console.log(opponant);
       toggleViews(mapCanvas, fightScreen);
+
      fightScreen.innerHTML = "<img id='playerPokemon' src="+ game.player.pokemonOnHand[0].back_picture+ "></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img id='opponantPokemon' src="+ opponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+opponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+opponant.pokemonOnHand[0].fightHp+"</p><img id='fight_textbox' src='/img/message.png'></img>";
       fightScreen.innerHTML += "<p id='move_text'>Your "+game.player.pokemonOnHand[0].name+" fights against "+opponant.pokemonOnHand[0].name+"!</p>";
+
     }
   }
 
@@ -255,11 +261,13 @@ var Map = function(pokemonData, Player, Pokemon) {
       var randNum = Math.ceil(Math.random()*(10 - 0));      
 
       if (randNum === 10) {
+        randNum = 0;
         console.log('you are being attacked');
-        
+        aCount = 1;
         fightOpponant = game.grassOpponant;
         initiateFight(fightOpponant);
         console.log(fightOpponant);
+        
 
       }
     }
@@ -584,19 +592,23 @@ var Map = function(pokemonData, Player, Pokemon) {
   }
 
   aButton.onclick = function(){
-    if((x==90 || x == 450) && y == 190){
+    ////////////////////////////////////////////
+    if ((x == 90 || x == 450) && y == 190){
       initiateFight(fightOpponant);
     }
+    ////////////////////////////////////////////
 
+    ///////////////////IN FIGHT////////////////////////
 
-    ///////////////////IN FIGHT///
-
-    if (fightScreen.style.zIndex == 100) {
+    if (fightScreen.style.zIndex == 100 ) {
 
       if (game.player.pokemonOnHand.length >= 1 && fightOpponant.pokemonOnHand.length >= 1) {
 
-        game.fight(game.player, fightOpponant, game.calcDamage);
-        
+        if (fightOpponant == game.grassOpponant){
+          game.fight(game.player, fightOpponant, game.calcDamage);
+          console.log('fight called');
+        }
+
         fightScreen.innerHTML = "<img id='playerPokemon' src="+ game.player.pokemonOnHand[0].back_picture+ "></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img id='opponantPokemon' src="+ fightOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+fightOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+fightOpponant.pokemonOnHand[0].fightHp+"</p> <img id='fight_textbox' src='/img/message.png'></img>";
 
         if (game.player.turn == true) {
@@ -605,12 +617,22 @@ var Map = function(pokemonData, Player, Pokemon) {
         else {
          fightScreen.innerHTML += "<p id='move_text'>"+fightOpponant.pokemonOnHand[0].name+" used "+fightOpponant.pokemonOnHand[0].move+" against your"+game.player.pokemonOnHand[0].name+"!</p>";
         }
+        
 
+        //////////////////////////////////////
+        aCount = 1;
+        if (fightOpponant !== game.grassOpponant && aCount == 1){
+          game.fight(game.player, fightOpponant, game.calcDamage);
+          console.log('fight called');
+        }
+        ///////////////////////////////////////
+        
         game.checkForFainted(game.player);
         game.checkForFainted(fightOpponant);
 
         console.log('aButton in fight has been clicked');
       }
+
       else {
         if(fightOpponant == game.grassOpponant){
           game.getFaintedPokemon(game.player, game.grassOpponant);
@@ -629,10 +651,17 @@ var Map = function(pokemonData, Player, Pokemon) {
       console.log('zIndex of home', mapCanvas.style.zIndex);
       console.log('aButton has been clicked in house');
 
+
     }
 
     ////////////// ON MAP ///////////////////
     else if (mapCanvas.style.zIndex == 100) {
+      /////////// STARTS THE GYM FIGHTS ///////////////////
+      
+
+
+      /////////////////////////////////////////////////////
+
       if (x === 50 && y === 420) {
         toggleViews(mapCanvas, homeScreen);
         atHome();
@@ -654,71 +683,71 @@ var Map = function(pokemonData, Player, Pokemon) {
   ////////////// END OF ABUTTON //////////////////////
 
 
+/////////// 01 WELCOME SCREEN ////////////////  
+nameSubmitButton.onclick = function() {
+  var nameToAdd = document.querySelector('#name_to_add');
+  game.player.setPlayersName(nameToAdd.value);
+  //////
 
-  /////////// 01 WELCOME SCREEN ////////////////  
-  nameSubmitButton.onclick = function() {
-    var nameToAdd = document.querySelector('#name_to_add');
-    game.player.setPlayersName(nameToAdd.value);
-    //////
+  game.populateOpponant(game.grassOpponant, 1);
+  game.populateOpponant(game.gymOpponant1, 3);
+  game.populateOpponant(game.gymOpponant2, 3);
+  console.log('opponants pokemon', game.grassOpponant.pokemonOnHand[0]);
 
-    game.populateOpponant(game.grassOpponant, 1);
-    game.populateOpponant(game.gymOpponant1, 3);
-    game.populateOpponant(game.gymOpponant2, 3);
-    console.log('opponants pokemon', game.grassOpponant.pokemonOnHand[0]);
+  toggleViews(welcomeScreen, chooseScreen);
 
-    toggleViews(welcomeScreen, chooseScreen);
+  /////////// 02 CHOOSE SCREEN ////////////////  
+  var welcomeQuote = document.createElement('p');
+  welcomeQuote.innerText = "Hey " + game.player.name + "! Choose your Pokémon!"
+  chooseScreen.appendChild(welcomeQuote);
 
-    /////////// 02 CHOOSE SCREEN ////////////////  
-    var welcomeQuote = document.createElement('p');
-    welcomeQuote.innerText = "Hey " + game.player.name + "! Choose your Pokémon!"
-    chooseScreen.appendChild(welcomeQuote);
+  var bulbasaurPic = document.createElement('img');
+  bulbasaurPic.id = 'bulbasaur';
+  bulbasaurPic.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png';
 
-    var bulbasaurPic = document.createElement('img');
-    bulbasaurPic.id = 'bulbasaur';
-    bulbasaurPic.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png';
+  var charmanderPic = document.createElement('img');
+  charmanderPic.id = 'charmander';
+  charmanderPic.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png';
 
-    var charmanderPic = document.createElement('img');
-    charmanderPic.id = 'charmander';
-    charmanderPic.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png';
+  var squirtlePic = document.createElement('img');
+  squirtlePic.id = 'squirtle';
+  squirtlePic.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png';
 
-    var squirtlePic = document.createElement('img');
-    squirtlePic.id = 'squirtle';
-    squirtlePic.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png';
+  chooseScreen.appendChild(bulbasaurPic);
+  chooseScreen.appendChild(charmanderPic);
+  chooseScreen.appendChild(squirtlePic);
 
-    chooseScreen.appendChild(bulbasaurPic);
-    chooseScreen.appendChild(charmanderPic);
-    chooseScreen.appendChild(squirtlePic);
-
-    bulbasaurPic.onclick = function() {
-     game.playerPicksPokemon("blastoise");
-     console.log('sweet you have choosen bulbi! its gonna be muddy', game.player.pokemonOnHand[0]);
-     toggleViews(chooseScreen, mapCanvas);
-   }
-
-   charmanderPic.onclick = function() {
-     game.playerPicksPokemon("charmander");
-     console.log('sweet you have choosen charmi! its gonna be hot', game.player.pokemonOnHand[0]);
-     toggleViews(chooseScreen, mapCanvas);
-   }
-
-   squirtlePic.onclick = function() {
-     game.playerPicksPokemon("squirtle");
-     console.log('sweet you have choosen squirty! its gonna be wet', game.player.pokemonOnHand[0]);
-     toggleViews(chooseScreen, mapCanvas);
-   }
-
+  bulbasaurPic.onclick = function() {
+   game.playerPicksPokemon("blastoise");
+   console.log('sweet you have choosen bulbi! its gonna be muddy', game.player.pokemonOnHand[0]);
+   toggleViews(chooseScreen, mapCanvas);
  }
 
+ charmanderPic.onclick = function() {
+   game.playerPicksPokemon("charmander");
+   console.log('sweet you have choosen charmi! its gonna be hot', game.player.pokemonOnHand[0]);
+   toggleViews(chooseScreen, mapCanvas);
+ }
+
+ squirtlePic.onclick = function() {
+   game.playerPicksPokemon("squirtle");
+   console.log('sweet you have choosen squirty! its gonna be wet', game.player.pokemonOnHand[0]);
+   toggleViews(chooseScreen, mapCanvas);
+ }
+
+}
 
 
- //////////////// BUTTONS ///////////////////////////////////////////////////////////////////////
+
+//////////////// BUTTONS ///////////////////////////////////////////////////////////////////////
 
 
 
 
- var toggleViews = function(recentView, nextView) {
+var toggleViews = function(recentView, nextView) {
   recentView.style.zIndex = 1;
   nextView.style.zIndex = 100;
+  console.log(aCount)
 }
 
 loadCanvas();
