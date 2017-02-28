@@ -247,3 +247,44 @@ p{
   z-index: 1;
   background-color: orange;
 }
+
+.minipic_on_hand {
+  display: inline-block;
+  margin: 2px;
+  width: 45px;
+  height: 45px;
+  border-radius: 22.5px;
+  background-color: lightgray;
+}
+
+.minipic_fainted {
+  display: inline-block;
+  margin: 2px;
+  width: 45px;
+  height: 45px;
+  border-radius: 22.5px;
+  filter: grayscale(100%);
+  background-color: gray;
+}
+
+.player_div {
+  display: block;
+  position: absolute;
+  width: 290px;
+  height: 49px;
+  top: 100px;
+  left: 0;
+  background-image: url("/img/villainbar.png");
+  background-size: 100% 100%;
+}
+
+.opponant_div {
+  display: block;
+  position: absolute;
+  width: 280px;
+  height: 49px;
+  top: 0;
+  left: 290px;
+  background-image: url("/img/herobar.png");
+  background-size:100% 100%;
+}
