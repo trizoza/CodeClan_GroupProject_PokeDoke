@@ -152,6 +152,9 @@ var Map = function(pokemonData, Player, Pokemon) {
   var nameSubmitButton = document.querySelector('#submit_name');
   var fightOpponant;
 
+
+  
+
   loadCanvas = function() {
     pavement.onload = function() {
       context.drawImage(this, 0, 0, 580, 460);
@@ -190,6 +193,7 @@ var Map = function(pokemonData, Player, Pokemon) {
         context.drawImage(grass, 340, 280, 40, 60);
         context.drawImage(grass, 300, 280, 40, 60);
         context.drawImage(grass, 260, 280, 40, 60);
+
       };
       drawMap();
       context.drawImage(ash, x - 20, y - 20, ashWidth, ashHeight);
@@ -324,8 +328,7 @@ var Map = function(pokemonData, Player, Pokemon) {
     if (game.player.pokemonOnHand.length >= 1 && opponant.pokemonOnHand.length >= 1) {
       console.log(opponant);
       toggleViews(mapCanvas, fightScreen);
-     fightScreen.innerHTML = "<img id='playerPokemon' src="+ game.player.pokemonOnHand[0].back_picture+ "></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img id='opponantPokemon' src="+ opponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+opponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+opponant.pokemonOnHand[0].fightHp+"</p> <img id='fight_textbox' src='/img/message.png'></img>";
-
+     fightScreen.innerHTML = "<img id='playerPokemon' src="+ game.player.pokemonOnHand[0].back_picture+ "></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><progress id='player_pok_hp' value="+game.player.pokemonOnHand[0].fightHp+" max="+game.player.pokemonOnHand[0].hp+"></progress></p><img id='opponantPokemon' src="+ opponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+opponant.pokemonOnHand[0].name+"</p><progress id='opponant_pok_hp' value="+opponant.pokemonOnHand[0].fightHp+" max="+opponant.pokemonOnHand[0].hp+"></progress><img id='fight_textbox' src='/img/message.png'></img>";
     }
   }
 
@@ -662,8 +665,9 @@ var Map = function(pokemonData, Player, Pokemon) {
 
         game.fight(game.player, fightOpponant, game.calcDamage);
         
-        fightScreen.innerHTML = "<img id='playerPokemon' src="+ game.player.pokemonOnHand[0].back_picture+ "></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><p id='player_pok_hp'>"+game.player.pokemonOnHand[0].fightHp+"</p><img id='opponantPokemon' src="+ fightOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+fightOpponant.pokemonOnHand[0].name+"</p><p id='opponant_pok_hp'>"+fightOpponant.pokemonOnHand[0].fightHp+"</p> <img id='fight_textbox' src='/img/message.png'></img>";
-
+         fightScreen.innerHTML = "<img id='playerPokemon' src="+ game.player.pokemonOnHand[0].back_picture+ "></img><p id='player_name'>"+game.player.name+"</p><p id='player_pok_name'>"+game.player.pokemonOnHand[0].name+"</p><progress id='player_pok_hp' value="+game.player.pokemonOnHand[0].fightHp+" max="+game.player.pokemonOnHand[0].hp+"></progress></p><img id='opponantPokemon' src="+ fightOpponant.pokemonOnHand[0].front_picture+"></img><p id='opponant_pok_name'>"+fightOpponant.pokemonOnHand[0].name+"</p><progress id='opponant_pok_hp' value="+fightOpponant.pokemonOnHand[0].fightHp+" max="+fightOpponant.pokemonOnHand[0].hp+"></progress><img id='fight_textbox' src='/img/message.png'></img>";
+        
+        
         game.checkForFainted(game.player);
         game.checkForFainted(fightOpponant);
 

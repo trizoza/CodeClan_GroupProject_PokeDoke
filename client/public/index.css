@@ -129,6 +129,13 @@ p{
   height: 460px;
 }
 
+.shadow {
+  box-shadow:
+  inset 0 0 15px #000,
+  inset 0 0 15px #000,
+  inset 0 0 15px #000;
+}
+
 #welcomeScreen {
   display: block;
   position: absolute;
@@ -136,10 +143,6 @@ p{
   width: 580px;
   height: 460px;
   background: url('img/pavement.png');
-  box-shadow:
-  inset 0 0 15px #000,
-  inset 0 0 15px #000,
-  inset 0 0 15px #000;
 }
 
 #choose_screen {
@@ -197,8 +200,8 @@ p{
   position: absolute;
   width: 160px;
   height: 160px;
-  right: 80px;
-  top: 20px; 
+  right: 31px;
+  top: 38px; 
 }
 
 #opponant_pok_name{
@@ -208,8 +211,9 @@ p{
 
 #opponant_pok_hp{
   position: absolute;
-  left:360px;
-  top: 25px;
+  left:352px;
+  top: 49px;
+  font-size: 20px;
 }
 
 #home_screen {
