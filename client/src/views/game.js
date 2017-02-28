@@ -45,8 +45,8 @@ Game.prototype = {
       var random = Math.random()*(1.2 - 0.8) + 0.8;
       console.log('rand', random);
       var damage = Math.round(base * random) + bonus;
-      if (damage < 1) {
-        damage = 1;
+      if (damage < 10) {
+        damage = 10;
       }
       return damage;
     },

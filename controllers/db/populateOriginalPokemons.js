@@ -35,7 +35,7 @@ PopulateDatabaseWithPokemons.prototype =  {
         front_picture: "",
         back_picture: "",
         type: "",
-        move: ""
+        moves: [],
         };
         var pokemonName = jsonObject.forms[0].name;
         object.name = pokemonName;
@@ -46,7 +46,11 @@ PopulateDatabaseWithPokemons.prototype =  {
         object.front_picture = jsonObject.sprites.front_default;
         object.back_picture = jsonObject.sprites.back_default;
         object.type = jsonObject.types[0].type.name;
-        object.move = jsonObject.moves[0].move.name;
+        arrayOfMoves = jsonObject.moves;
+        for (var each of arrayOfMoves) {
+          object.moves.push(each.move.name);
+        }
+        object.moves = jsonObject.moves[0].move.name;
         collection.insert(object);
         console.log('collection length', collection.length);
         console.log('pokemon id', object.id);
