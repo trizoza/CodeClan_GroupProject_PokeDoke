@@ -10,6 +10,8 @@ var Map = function(pokemonData, Player, Pokemon) {
   var fightScreen = document.querySelector('#fight_screen');
   var homeScreen = document.querySelector('#home_screen');
   var craigScreen = document.querySelector('#craig_screen');
+  var simonScreen = document.querySelector('#simon_screen');
+  var zsoltScreen = document.querySelector('#zsolt_screen')
   var mapCanvas = document.querySelector("#map");
 
   var context = mapCanvas.getContext('2d');
@@ -329,7 +331,7 @@ var Map = function(pokemonData, Player, Pokemon) {
     //////////////// SETUP HTML //////////////////////////////////////////////////////////////////
     homeScreen.innerHTML = "";
     var welcomeAtHome = document.createElement('p');
-    welcomeAtHome.innerText = "Welcome home " + game.player.name + "! Here you can take a rest and let your Pokémon rest too. Once you leave home, your Pokémon will be again strong and healthy. Press A to hit the world!";
+    welcomeAtHome.innerText = "Welcome home " + game.player.name +"! Here you can take a rest and let your Pokémon rest too. Once you leave home, your Pokémon will be again strong and healthy. Press A to hit the world!";
     homeScreen.appendChild(welcomeAtHome);
     //////////////////////// POKEDEX SELECTION ///////////////////////////////////////////////////
     var selectionContainer = document.createElement('div');
@@ -548,9 +550,27 @@ var Map = function(pokemonData, Player, Pokemon) {
   //////////// END OF AT HOME ////////////////////////////////////////////////////////////////////////
 
 
-  //////////////////////// WITH CRAIG ////////////////////////////////////////////
+  //////////////////////// WITH CRAIG or SIMON ////////////////////////////////////////////
   var withCraig = function() {
-    craigScreen.innerHTML = "<p>Hi "+game.player.name+"! My name is Craig! Welcome to Edinburgh, but be careful, the Meadows are full of wild Pokémon and there also some tough trainers in our gyms!</p>";
+    craigScreen.innerHTML = "<p id='craigSpeech'>Hi "+game.player.name+"! My name is CRIG MORTOB!  Be careful... the Meadows are full of wild Pokémon and there also some tough trainers in our gyms!</p><img src='./img/brockCraig.png' id='brockCraig'>";
+  }
+
+  var withSimon = function() {
+    if(game.gymOpponant2.pokemonOnHand.length > 0){
+      simonScreen.innerHTML = "<p id='simonSpeech'>Morning guys! My Name is SIMON. Step inside and I will take you on with my grassy friends!</p><img src='./img/simon2.png' id='zsoltachu'><img src='./img/grassIcon.png' id='gymBadge'>";
+    }
+    else{
+      simonScreen.innerHTML = "<p id='simonSpeech'> Wow, you guys are SO talented! Here is a badge for yourselves!</p><img src='./img/simon2.png' id='zsoltachu'><img src='./img/earthBadge.png' id='gymBadge'>";
+    }
+  }
+
+  var withZsolt = function() {
+    if(game.gymOpponant1.pokemonOnHand.length > 0){
+      zsoltScreen.innerHTML = "<p id='zsoltSpeech'>HELLO!!! My Name is ZSOLT. Fight my electric buddies and feel the ZSOLTAGE!!!</p><img src='./img/zsoltBod.png' id='zsoltachu'><img src='./img/electricIcon.png' id='gymBadge'>";
+    }
+    else{
+      zsoltScreen.innerHTML = "<p id='zsoltSpeech'> Wow, good stuff! You are beautiful people! Take this badge, you earned it!</p><img src='./img/zsoltBod.png' id='zsoltachu'><img src='./img/thunderBadge.png' id='gymBadge'>";
+    }
   }
 
   ///////////// GENERATE MINI PICTURES OF POKEMON IN FIGHT ////////////////////////////////////////
@@ -561,7 +581,6 @@ var Map = function(pokemonData, Player, Pokemon) {
     var playerDiv = document.createElement('div');
     playerDiv.className = 'player_div';
     fightScreen.appendChild(playerDiv);
-    // var heroBar = document.cre
     if (player.pokemonOnHand.length > 0) {
       console.log('generating miniatures inside');
       for (var i = 1; i < player.pokemonOnHand.length; i++) {
@@ -600,10 +619,6 @@ var Map = function(pokemonData, Player, Pokemon) {
       }
     }
   };
-
-
-
-
 
   //////////////// BUTTONS ///////////////////////////////////////////////////////////////////////
   upButton.onclick = function(){
@@ -729,27 +744,7 @@ var Map = function(pokemonData, Player, Pokemon) {
 
     ////////////// ON MAP ///////////////////
     else if (mapCanvas.style.zIndex == 100) {
-      /////////// STARTS THE GYM FIGHTS ///////////////////
-      
-      if ((x == 90 || x == 450) && y == 190){
-
-        initiateFight(fightOpponant);
-        console.log('call initiate at gym')
-      } 
-
-      /////////////////////////////////////////////////////
-
-      if (x === 50 && y === 420) {
-        toggleViews(mapCanvas, homeScreen);
-        atHome();
-        console.log('zIndex of mapCanvas', mapCanvas.style.zIndex);
-      }
-      ////////////// AROUND CRAIG ///////////////
-      if (x === 240 && y === 340) {
-        toggleViews(mapCanvas, craigScreen);
-        withCraig();
-      }
-
+      /////////////CHEAT//////////////////////////////
       if (x === 170 && y === 20) {
         var cheat = prompt("You have found the wizard's corner. Answer his question correctly and all his Pokémon will be yours!\n\n'What is the best cohort in CodeClan?'");
         if (cheat === 'cohort9') {
@@ -767,15 +762,46 @@ var Map = function(pokemonData, Player, Pokemon) {
           alert('Wizard: "No, that is not true and everyone knows that!"');
         }
       }
+      /////////// STARTS THE GYM FIGHTS ///////////////////
+      
+      else if ((x == 90 || x == 450) && y == 190){
+        initiateFight(fightOpponant);
+        console.log('call initiate at gym')
+      } 
 
+      /////////////////////////////////////////////////////
+
+      else if (x === 50 && y === 420) {
+        toggleViews(mapCanvas, homeScreen);
+        atHome();
+        console.log('zIndex of mapCanvas', mapCanvas.style.zIndex);
+      }
+      ////////////// AROUND CRAIG OR SIMON OR ZSOLT ///////////////
+      else if (x === 240 && y === 340) {
+        toggleViews(mapCanvas, craigScreen);
+        withCraig();
+      }
+
+      else if (x === 490  && y === 190 ) {
+        toggleViews(mapCanvas, simonScreen);
+        withSimon();
+      }
+      else if (x === 130  && y === 190 ) {
+        toggleViews(mapCanvas, zsoltScreen);
+        withZsolt();
+      }
     }
 
-    /////////////// WITH CRAIG //////////////////
+    /////////////// WITH CRAIG OR SIMON //////////////////
     else if (craigScreen.style.zIndex == 100) {
       toggleViews(craigScreen, mapCanvas);
     }
-
-
+    else if (simonScreen.style.zIndex == 100) {
+      toggleViews(simonScreen, mapCanvas);
+    }
+    else if (zsoltScreen.style.zIndex == 100) {
+      toggleViews(zsoltScreen, mapCanvas);
+    }
 
   }
   ////////////// END OF ABUTTON //////////////////////
@@ -797,7 +823,7 @@ nameSubmitButton.onclick = function() {
   /////////// 02 CHOOSE SCREEN ////////////////  
   var welcomeQuote = document.createElement('p');
   chooseScreen.innerHTML = "";
-  welcomeQuote.innerText = "Hey " + game.player.name + "! Choose your Pokémon!"
+  welcomeQuote.innerText = "Hey " + game.player.name + "! Choose your Pokémon, then... Go Away!"
   chooseScreen.appendChild(welcomeQuote);
 
   welcomeQuote.id ='welcomeQuote';

@@ -212,14 +212,14 @@ p{
   width: 160px;
   height: 160px;
   right: 31px;
-  top: 102px;
+  top: 68px; 
 }
 
 #opponant_pok_name{
   position: absolute;
-      left: 345px;
-      top: 54px;
-      font-size: 20px;
+  left: 352px;
+  top: 45px;
+  font-size: 20px;
 }
 
 #move_text {
@@ -231,8 +231,8 @@ p{
 
 #opponant_pok_hp{
   position: absolute;
-  left: 352px;
-  top: 87px;
+  left:352px;
+  top: 73px;
 }
 
 #home_screen {
@@ -246,6 +246,24 @@ p{
 }
 
 #craig_screen {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 580px;
+  height: 460px;
+  background-image: url("/img/pavement.png");
+}
+
+#simon_screen {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 580px;
+  height: 460px;
+  background-image: url("/img/pavement.png");
+}
+
+#zsolt_screen {
   display: block;
   position: absolute;
   z-index: 1;
@@ -292,8 +310,12 @@ p{
   position: absolute;
   width: 290px;
   height: 49px;
-  top: 32px;
+  top: 31px;
   left: 0;
+  /*background-image: url("/img/villainbar.png");*/
+  background-size: 100% 100%;
+  /*border-right: solid black;
+  border-top: solid black;*/
 }
 
 /*#villain_bar {
@@ -320,9 +342,11 @@ p{
   width: 280px;
   height: 49px;
   top: 0;
-  left: 290px;
-  
+  left: 345px;
+  /*background-image: url("/img/herobar.png");*/
   background-size:100% 100%;
+  /*border-left: solid black;
+  border-bottom: solid black;*/
 }
 
 #bulbasaur{
@@ -335,6 +359,22 @@ p{
  background-size: 30%;
  background-repeat: no-repeat;
  background-color: rgba(0, 128, 0, 0.28);
+ border-top: 3px solid #CCCCCC;
+ border-right: 3px solid #333333;
+ border-bottom: 3px solid #333333;
+ border-left: 3px solid #CCCCCC;
+}
+
+#bulbasaur:hover{
+ width: 180px;
+ height: 180px;
+ position: relative;
+ left: 10px;
+ border: solid white;
+ background: url(https://lh3.googleusercontent.com/-E9V-RjhfoKI/AAAAAAAAAAI/AAAAAAAAAAA/-Zb5Yxd6eDU/photo.jpg);
+ background-size: 30%;
+ background-repeat: no-repeat;
+ background-color: rgba(0, 128, 0, 0.68);
  border-top: 3px solid #CCCCCC;
  border-right: 3px solid #333333;
  border-bottom: 3px solid #333333;
@@ -357,6 +397,22 @@ p{
   border-left: 3px solid #CCCCCC;
 }
 
+#charmander:hover{
+  width: 180px;
+  height: 180px;
+  position: relative;
+  left: 10px;
+  border: solid white;
+  background-image: url(https://lh6.googleusercontent.com/-4wLBAIT9uSg/AAAAAAAAAAI/AAAAAAAAAG4/UhVUIYIz4r8/photo.jpg);
+  background-size: 30%;
+  background-color: rgba(255, 165, 0, 0.91);
+  background-repeat: no-repeat;
+  border-top: 3px solid #CCCCCC;
+  border-right: 3px solid #333333;
+  border-bottom: 3px solid #333333;
+  border-left: 3px solid #CCCCCC;
+}
+
 #squirtle{
   width: 180px;
   height: 180px;
@@ -371,4 +427,70 @@ p{
   border-right: 3px solid #333333;
   border-bottom: 3px solid #333333;
   border-left: 3px solid #CCCCCC;
+}
+
+#squirtle:hover{
+  width: 180px;
+  height: 180px;
+  position: relative;
+  left: 10px;
+  border: solid white;
+  background: url(http://orig12.deviantart.net/3c0e/f/2016/137/c/a/water_type_energy_symbol_by_maskadra42-d606iej.png);
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-color: dodgerblue;
+  border-top: 3px solid #CCCCCC;
+  border-right: 3px solid #333333;
+  border-bottom: 3px solid #333333;
+  border-left: 3px solid #CCCCCC;
+}
+
+#craigSpeech{
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+#simonSpeech{
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+#zsoltSpeech{
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+#brockCraig{
+  height: 44%;
+  width: 33%;
+  position: absolute;
+  left:180px;
+}
+
+#zsoltachu{
+  height: 56%;
+  width: 39%;
+  position: absolute;
+  left:90px;
+}
+
+#gymBadge{
+  height: 30%;
+  width: 30%;
+  position: absolute;
+  left: 325px;
+  top: 183px;
+}
+
+#simonPic{
+  height: 44%;
+  width: 33%;
+  position: absolute;
+  left:180px;
 }
