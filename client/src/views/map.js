@@ -55,8 +55,6 @@ var Map = function(pokemonData, Player, Pokemon) {
   var nameSubmitButton = document.querySelector('#submit_name');
   var fightOpponant;
 
-
-
   preloadFirstThreePokemon = function() {
     bulbasaurPic.onload = function() {
       chooseScreen.appendChild(bulbasaurPic);
@@ -120,7 +118,6 @@ var Map = function(pokemonData, Player, Pokemon) {
         context.drawImage(grass, 340, 280, 40, 60);
         context.drawImage(grass, 300, 280, 40, 60);
         context.drawImage(grass, 260, 280, 40, 60);
-
       };
       drawMap();
       context.drawImage(ashDown, x - 20, y - 20, ashWidth, ashHeight);
@@ -162,6 +159,7 @@ var Map = function(pokemonData, Player, Pokemon) {
   var moveAsh = function(directionPic, xInc, yInc) {
     drawMap();
     context.drawImage(directionPic, x - 20 + xInc, y - 20 + yInc, ashWidth, ashHeight);
+    context.drawImage(gym, 0, 0, 220, 170);
     x += xInc;
     y += yInc;
     console.log(x,y);
@@ -195,7 +193,10 @@ var Map = function(pokemonData, Player, Pokemon) {
         if (x <= 20) {
           moveAsh(ashLeft, 0, 0);
         }
-        else if (x === 240 && 20 <= y && y <= 180) {
+        else if (x === 240 && 30 <= y && y <= 180) {
+          moveAsh(ashLeft, 0, 0);
+        }
+        else if (x === 170 && 20 === y) {
           moveAsh(ashLeft, 0, 0);
         }
         else if (x === 170 && 260 <= y && y <= 410) {
@@ -240,6 +241,14 @@ var Map = function(pokemonData, Player, Pokemon) {
         }
         else if (y === 250 && 20 <= x && x <= 160) {
           moveAsh(ashDown, 0, 0);
+        }
+        else if (x >= 170 && x <= 230 && 20 === y) {
+          moveAsh(ashDown, 0, 0);
+
+
+
+
+
         }
         else if (y === 260 && 210 <= x && x <= 270) {
           moveAsh(ashDown, 0, 0);
