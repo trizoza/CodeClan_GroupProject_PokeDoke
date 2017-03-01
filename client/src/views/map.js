@@ -11,7 +11,8 @@ var Map = function(pokemonData, Player, Pokemon) {
   var homeScreen = document.querySelector('#home_screen');
   var craigScreen = document.querySelector('#craig_screen');
   var simonScreen = document.querySelector('#simon_screen');
-  var zsoltScreen = document.querySelector('#zsolt_screen')
+  var zsoltScreen = document.querySelector('#zsolt_screen');
+  var winScreen = document.querySelector('#win_screen');
   var mapCanvas = document.querySelector("#map");
 
   var context = mapCanvas.getContext('2d');
@@ -49,6 +50,11 @@ var Map = function(pokemonData, Player, Pokemon) {
   var squirtlePic = document.createElement('img');
   squirtlePic.id = 'squirtle';
   squirtlePic.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png';
+  
+  var mattPic = document.createElement('img');
+  mattPic.id = 'win_matthew';
+  mattPic.src = 'img/matt.png';
+
   var upButton = document.querySelector('#up-button');
   var downButton = document.querySelector('#down-button');
   var leftButton = document.querySelector('#left-button');
@@ -67,6 +73,7 @@ var Map = function(pokemonData, Player, Pokemon) {
     squirtlePic.onload = function() {
       chooseScreen.appendChild(squirtlePic);
     }
+    winScreen.appendChild(mattPic);
   };
   preloadFirstThreePokemon();
 
@@ -166,6 +173,7 @@ var Map = function(pokemonData, Player, Pokemon) {
     y += yInc;
     console.log(x,y);
     checkIfInGrass();
+    checkForWin();
   };
 
   document.onkeydown = function(event) {
@@ -337,7 +345,7 @@ var Map = function(pokemonData, Player, Pokemon) {
     var selectionContainer = document.createElement('div');
     homeScreen.appendChild(selectionContainer);
     var pokedexSelection = document.createElement('select');
-    
+    pokedexSelection.className = 'selection';
     var populateSelectionDropDown = function () {
       if (game.player.pokedex.length >=1) {
         game.player.pokedex.sort(function(a, b) {
@@ -389,7 +397,8 @@ var Map = function(pokemonData, Player, Pokemon) {
       pokemonDetails.appendChild(img);
       pokemonDetails.appendChild(p);
       var addToHandButton = document.createElement('button');
-      addToHandButton.innerText = "Add on hand"
+      addToHandButton.innerText = "Add to hand";
+      addToHandButton.className = 'selection';
       pokemonDetails.appendChild(addToHandButton);
 
       var handleButtonClick = function(){
@@ -806,6 +815,7 @@ var Map = function(pokemonData, Player, Pokemon) {
   }
   ////////////// END OF ABUTTON //////////////////////
 
+///////////// WIN SCREEN ///////////////////////
 
 /////////// 01 WELCOME SCREEN ////////////////  
 nameSubmitButton.onclick = function() {
@@ -830,7 +840,7 @@ nameSubmitButton.onclick = function() {
 
   var matthewPic = document.createElement('img');
   matthewPic.id ='mattOak';
-  matthewPic.src = './img/matt.png'
+  matthewPic.src = './img/matt.png';
   chooseScreen.appendChild(matthewPic);
 
   chooseScreen.appendChild(charmanderPic);
@@ -856,6 +866,14 @@ nameSubmitButton.onclick = function() {
  }
 
 }
+
+var checkForWin = function() {
+  var pokeSum = 0;
+  pokeSum = game.player.pokemonOnHand.length + game.player.faintedPokemons.length + game.player.pokedex.length;
+  if (pokeSum === 151) {
+    toggleViews(mapCanvas, winScreen);
+  }
+};
 
 //////////////// BUTTONS ///////////////////////////////////////////////////////////////////////
 

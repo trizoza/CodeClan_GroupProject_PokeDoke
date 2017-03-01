@@ -20,6 +20,10 @@ p{
   padding: 10px;
 }
 
+.selection {
+  margin-left: 15px;
+}
+
 #nameQuestion{
   width: 50%;
 }
@@ -155,6 +159,15 @@ p{
   background: url('img/pavement.png');
 }
 
+#win_screen {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 580px;
+  height: 460px;
+  background: url('img/pavement.png');
+}
+
 #choose_screen {
   display: block;
   position: absolute;
@@ -279,6 +292,22 @@ p{
   margin:auto;
 }
 
+@keyframes example {
+    0% {transform:rotate(15deg);}
+    50%{transform:rotate(-15deg);}
+    100% {transform:rotate(15deg);}
+}
+
+#win_matthew{
+  height: 60%;
+  width: 33%;
+  display: block;
+  margin:auto;
+  animation-name: example;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
 #map {
   display: block;
   position: absolute;
@@ -355,7 +384,7 @@ p{
  position: relative;
  left: 10px;
  border: solid white;
- background: url(https://lh3.googleusercontent.com/-E9V-RjhfoKI/AAAAAAAAAAI/AAAAAAAAAAA/-Zb5Yxd6eDU/photo.jpg);
+ background: url('/img/grass_logo.jpg');
  background-size: 30%;
  background-repeat: no-repeat;
  background-color: rgba(0, 128, 0, 0.28);
@@ -371,7 +400,7 @@ p{
  position: relative;
  left: 10px;
  border: solid white;
- background: url(https://lh3.googleusercontent.com/-E9V-RjhfoKI/AAAAAAAAAAI/AAAAAAAAAAA/-Zb5Yxd6eDU/photo.jpg);
+ background: url('/img/grass_logo.jpg');
  background-size: 30%;
  background-repeat: no-repeat;
  background-color: rgba(0, 128, 0, 0.68);
@@ -387,7 +416,7 @@ p{
   position: relative;
   left: 10px;
   border: solid white;
-  background-image: url(https://lh6.googleusercontent.com/-4wLBAIT9uSg/AAAAAAAAAAI/AAAAAAAAAG4/UhVUIYIz4r8/photo.jpg);
+  background-image: url('img/fire_logo.jpg');
   background-size: 30%;
   background-color: rgba(255, 165, 0, 0.51);
   background-repeat: no-repeat;
@@ -403,7 +432,7 @@ p{
   position: relative;
   left: 10px;
   border: solid white;
-  background-image: url(https://lh6.googleusercontent.com/-4wLBAIT9uSg/AAAAAAAAAAI/AAAAAAAAAG4/UhVUIYIz4r8/photo.jpg);
+  background-image: url('img/fire_logo.jpg');
   background-size: 30%;
   background-color: rgba(255, 165, 0, 0.91);
   background-repeat: no-repeat;
@@ -419,7 +448,7 @@ p{
   position: relative;
   left: 10px;
   border: solid white;
-  background: url(http://orig12.deviantart.net/3c0e/f/2016/137/c/a/water_type_energy_symbol_by_maskadra42-d606iej.png);
+  background: url('img/water_logo.png');
   background-size: 30%;
   background-repeat: no-repeat;
   background-color: rgba(173, 216, 230, 0.71);
@@ -435,7 +464,7 @@ p{
   position: relative;
   left: 10px;
   border: solid white;
-  background: url(http://orig12.deviantart.net/3c0e/f/2016/137/c/a/water_type_energy_symbol_by_maskadra42-d606iej.png);
+  background: url('img/water_logo.png');
   background-size: 30%;
   background-repeat: no-repeat;
   background-color: dodgerblue;
@@ -461,6 +490,13 @@ p{
 
 #zsoltSpeech{
   margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+#winSpeech{
+  margin-left: 22px;
   margin-right: 10px;
   font-size: 20px;
   line-height: 1.5;
