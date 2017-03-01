@@ -555,10 +555,10 @@ var Map = function(pokemonData, Player, Pokemon) {
 
   var withZsolt = function() {
     if(game.gymOpponant1.pokemonOnHand.length > 0){
-      zsoltScreen.innerHTML = "<p id='zsoltSpeech'>HELLO!!! My Name is ZSOLT. Fight my electric buddies and feel the ZSOLTAGE!!!</p><img src='./img/brockCraig.png' id='brockCraig'>";
+      zsoltScreen.innerHTML = "<p id='zsoltSpeech'>HELLO!!! My Name is ZSOLT. Fight my electric buddies and feel the ZSOLTAGE!!!</p><img src='./img/zsoltBod.png' id='zsoltachu'><img src='./img/electricIcon.png' id='gymBadge'>";
     }
     else{
-      zsoltScreen.innerHTML = "<p id='zsoltSpeech'> Wow, you are beautiful people! Take this badge, you earned it!</p><img src='./img/thunderBadge.png' id='brockCraig'>";
+      zsoltScreen.innerHTML = "<p id='zsoltSpeech'> Wow, you are beautiful people! Take this badge, you earned it!</p><img src='./img/zsoltBod.png' id='zsoltachu'><img src='./img/thunderBadge.png' id='gymBadge'>";
     }
   }
 

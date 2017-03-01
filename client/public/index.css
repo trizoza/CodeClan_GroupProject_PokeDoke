@@ -212,13 +212,13 @@ p{
   width: 160px;
   height: 160px;
   right: 31px;
-  top: 38px; 
+  top: 68px; 
 }
 
 #opponant_pok_name{
   position: absolute;
   left: 352px;
-  top: 13px;
+  top: 45px;
   font-size: 20px;
 }
 
@@ -232,7 +232,7 @@ p{
 #opponant_pok_hp{
   position: absolute;
   left:352px;
-  top: 49px;
+  top: 73px;
 }
 
 #home_screen {
@@ -310,10 +310,12 @@ p{
   position: absolute;
   width: 290px;
   height: 49px;
-  top: 100px;
+  top: 31px;
   left: 0;
-  background-image: url("/img/villainbar.png");
+  /*background-image: url("/img/villainbar.png");*/
   background-size: 100% 100%;
+  /*border-right: solid black;
+  border-top: solid black;*/
 }
 
 .opponant_div {
@@ -322,9 +324,11 @@ p{
   width: 280px;
   height: 49px;
   top: 0;
-  left: 290px;
-  background-image: url("/img/herobar.png");
+  left: 345px;
+  /*background-image: url("/img/herobar.png");*/
   background-size:100% 100%;
+  /*border-left: solid black;
+  border-bottom: solid black;*/
 }
 
 #bulbasaur{
@@ -449,6 +453,21 @@ p{
   width: 33%;
   position: absolute;
   left:180px;
+}
+
+#zsoltachu{
+  height: 56%;
+  width: 39%;
+  position: absolute;
+  left:90px;
+}
+
+#gymBadge{
+  height: 30%;
+  width: 30%;
+  position: absolute;
+  left: 325px;
+  top: 183px;
 }
 
 #simonPic{
