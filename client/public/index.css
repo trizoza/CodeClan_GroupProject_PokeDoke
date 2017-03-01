@@ -196,8 +196,8 @@ p{
 
 #player_pok_name{
   position: absolute;
-  left: 20px;
-  top: 80px;
+  left: 13px;
+  top: 78px;
   font-size: 20px;
 }
 
@@ -212,14 +212,14 @@ p{
   width: 160px;
   height: 160px;
   right: 31px;
-  top: 38px; 
+  top: 102px;
 }
 
 #opponant_pok_name{
   position: absolute;
-  left: 352px;
-  top: 13px;
-  font-size: 20px;
+      left: 345px;
+      top: 54px;
+      font-size: 20px;
 }
 
 #move_text {
@@ -231,8 +231,8 @@ p{
 
 #opponant_pok_hp{
   position: absolute;
-  left:352px;
-  top: 49px;
+  left: 352px;
+  top: 87px;
 }
 
 #home_screen {
@@ -270,7 +270,7 @@ p{
 
 .minipic_on_hand {
   display: inline-block;
-  margin: 2px;
+  margin: 0px 3px 10px 0px;
   width: 45px;
   height: 45px;
   border-radius: 22.5px;
@@ -292,11 +292,27 @@ p{
   position: absolute;
   width: 290px;
   height: 49px;
-  top: 100px;
+  top: 32px;
   left: 0;
-  background-image: url("/img/villainbar.png");
-  background-size: 100% 100%;
 }
+
+/*#villain_bar {
+  position: absolute;
+  width: 300px;
+  height: 50px;
+  top: 10px;
+  left: 300px;
+  background-image: url("/img/herobar.png");
+}
+
+#hero_bar {
+  position: absolute;
+  width: 300px;
+  height: 50px;
+  top: 40px;
+  left: 10px;
+  background-image: url("/img/villainbar.png");
+}*/
 
 .opponant_div {
   display: block;
@@ -305,7 +321,7 @@ p{
   height: 49px;
   top: 0;
   left: 290px;
-  background-image: url("/img/herobar.png");
+  
   background-size:100% 100%;
 }
 

@@ -550,7 +550,7 @@ var Map = function(pokemonData, Player, Pokemon) {
     var playerDiv = document.createElement('div');
     playerDiv.className = 'player_div';
     fightScreen.appendChild(playerDiv);
-
+    // var heroBar = document.cre
     if (player.pokemonOnHand.length > 0) {
       console.log('generating miniatures inside');
       for (var i = 1; i < player.pokemonOnHand.length; i++) {
@@ -568,8 +568,6 @@ var Map = function(pokemonData, Player, Pokemon) {
         playerDiv.appendChild(miniPic);
       }
     }
-
-
     
     var opponantDiv = document.createElement('div');
     fightScreen.appendChild(opponantDiv);
@@ -688,11 +686,8 @@ var Map = function(pokemonData, Player, Pokemon) {
         }
         
         generateMiniatures(game.player, fightOpponant);
-
-    
-       
           
-          console.log('fight called');
+        console.log('fight called');
         
         ///////////////////////////////////////
         
@@ -719,8 +714,6 @@ var Map = function(pokemonData, Player, Pokemon) {
       toggleViews(homeScreen, mapCanvas);
       console.log('zIndex of home', mapCanvas.style.zIndex);
       console.log('aButton has been clicked in house');
-
-
     }
 
     ////////////// ON MAP ///////////////////
@@ -761,7 +754,7 @@ var Map = function(pokemonData, Player, Pokemon) {
 /////////// 01 WELCOME SCREEN ////////////////  
 nameSubmitButton.onclick = function() {
   var nameToAdd = document.querySelector('#name_to_add');
-  game.player.setPlayersName(nameToAdd.value);
+  game.player.setPlayersName(nameToAdd.value.toUpperCase());
   //////
 
   game.populateOpponant(game.grassOpponant, 1);
@@ -789,19 +782,19 @@ nameSubmitButton.onclick = function() {
   chooseScreen.appendChild(squirtlePic);
 
   bulbasaurPic.onclick = function() {
-   game.playerPicksPokemon("blastoise");
+   game.playerPicksPokemon("BLASTOISE");
    console.log('sweet you have choosen bulbi! its gonna be muddy', game.player.pokemonOnHand[0]);
    toggleViews(chooseScreen, mapCanvas);
  }
 
  charmanderPic.onclick = function() {
-   game.playerPicksPokemon("charmander");
+   game.playerPicksPokemon("CHARMANDER");
    console.log('sweet you have choosen charmi! its gonna be hot', game.player.pokemonOnHand[0]);
    toggleViews(chooseScreen, mapCanvas);
  }
 
  squirtlePic.onclick = function() {
-   game.playerPicksPokemon("squirtle");
+   game.playerPicksPokemon("SQUIRTLE");
    console.log('sweet you have choosen squirty! its gonna be wet', game.player.pokemonOnHand[0]);
    toggleViews(chooseScreen, mapCanvas);
  }
