@@ -163,7 +163,6 @@ var Map = function(pokemonData, Player, Pokemon) {
     x += xInc;
     y += yInc;
     console.log(x,y);
-
     checkIfInGrass();
   };
 
@@ -747,6 +746,23 @@ var Map = function(pokemonData, Player, Pokemon) {
         toggleViews(mapCanvas, craigScreen);
         withCraig();
       }
+
+      if (x === 170 && y === 20) {
+        var cheat = prompt("You have found the chamber of cheaters! Do feel like cheating?");
+        if (cheat === 'iddqd') {
+          for (var each of game.unusedPokemon) {
+            var movePokemon = each;
+            game.player.pokedex.push(movePokemon);
+          }
+          var lengthOfUnused = game.unusedPokemon.length;
+          game.unusedPokemon.splice(0, lengthOfUnused);
+          console.log('unused pokemon', game.unusedPokemon);
+        }
+        else if (cheat === 'truth') {
+          alert('COHORT 9 RULES!');
+        }
+      }
+
     }
 
     /////////////// WITH CRAIG //////////////////

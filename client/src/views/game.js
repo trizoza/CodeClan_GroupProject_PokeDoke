@@ -29,11 +29,13 @@ Game.prototype = {
       // MISSING CASE WHEN YOU CAUGHT THEM ALL //        
       //                                       //
       ///////////////////////////////////////////
-      for(i = 0; i < numOfEnemies; i++){
-        console.log(this);
-        var takenPokemon = this.unusedPokemon.splice(Math.floor(Math.random()*this.unusedPokemon.length), 1)[0];
-        takenPokemon.fightHp = takenPokemon.hp;
-        opponant.pokemonOnHand.push(takenPokemon);
+      if (this.unusedPokemon.length >0) {
+        for(i = 0; i < numOfEnemies; i++){
+          console.log(this);
+          var takenPokemon = this.unusedPokemon.splice(Math.floor(Math.random()*this.unusedPokemon.length), 1)[0];
+          takenPokemon.fightHp = takenPokemon.hp;
+          opponant.pokemonOnHand.push(takenPokemon);
+        }
       }
     },
 
