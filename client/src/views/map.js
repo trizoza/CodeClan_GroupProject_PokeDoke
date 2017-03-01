@@ -751,8 +751,9 @@ var Map = function(pokemonData, Player, Pokemon) {
       }
 
       if (x === 170 && y === 20) {
-        var cheat = prompt("You have found the chamber of cheaters! Do feel like cheating?");
-        if (cheat === 'iddqd') {
+        var cheat = prompt("You have found the wizard's corner. Answer his question correctly and all his Pokémon will be yours!\n\n'What is the best cohort in CodeClan?'");
+        if (cheat === 'cohort9') {
+          alert('Wizard: "You are right! Take all my Pokémon!"');
           for (var each of game.unusedPokemon) {
             var movePokemon = each;
             game.player.pokedex.push(movePokemon);
@@ -760,9 +761,10 @@ var Map = function(pokemonData, Player, Pokemon) {
           var lengthOfUnused = game.unusedPokemon.length;
           game.unusedPokemon.splice(0, lengthOfUnused);
           console.log('unused pokemon', game.unusedPokemon);
+          console.log('unused pokedex', game.player.pokedex);
         }
-        else if (cheat === 'truth') {
-          alert('COHORT 9 RULES!');
+        else {
+          alert('Wizard: "No, that is not true and everyone knows that!"');
         }
       }
 
