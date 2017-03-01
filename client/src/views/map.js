@@ -338,6 +338,9 @@ var Map = function(pokemonData, Player, Pokemon) {
     
     var populateSelectionDropDown = function () {
       if (game.player.pokedex.length >=1) {
+        game.player.pokedex.sort(function(a, b) {
+          return a.id - b.id;
+        });
         selectionContainer.innerHTML = "";
         var selectionAdvice = document.createElement('p');
         selectionAdvice.innerText = "Choose a Pokémon from Pokedex";
