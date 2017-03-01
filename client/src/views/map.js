@@ -14,8 +14,8 @@ var Map = function(pokemonData, Player, Pokemon) {
 
   var context = mapCanvas.getContext('2d');
 
-  var x = 80;
-  var y = 440;
+  var x = 60;
+  var y = 420;
 
   var increment = 10;
   var ashDown = document.createElement('img');
