@@ -546,10 +546,10 @@ var Map = function(pokemonData, Player, Pokemon) {
 
   var withSimon = function() {
     if(game.gymOpponant2.pokemonOnHand.length > 0){
-      simonScreen.innerHTML = "<p id='simonSpeech'>Morning guys! My Name is SIMON. Step inside and I will take you on with my grassy friends!</p><img src='./img/brockCraig.png' id='brockCraig'>";
+      simonScreen.innerHTML = "<p id='simonSpeech'>Morning guys! My Name is SIMON. Step inside and I will take you on with my grassy friends!</p><img src='./img/simonasaur.png' id='zsoltachu'><img src='./img/grassIcon.png' id='gymBadge'>";
     }
     else{
-      simonScreen.innerHTML = "<p id='simonSpeech'> Wow, you guys are talented! Here is a badge for yourselves!</p><img src='./img/earthBadge.png' id='brockCraig'>";
+      simonScreen.innerHTML = "<p id='simonSpeech'> Wow, you guys are talented! Here is a badge for yourselves!</p><img src='./img/simonasaur.png' id='zsoltachu'><img src='./img/earthBadge.png' id='gymBadge'>";
     }
   }
 
