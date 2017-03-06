@@ -15,8 +15,10 @@ In top level folder:
 - in terminal type "mongod" and leave it running
 - in new terminal tab type "mongo < seeds.js" to seed database
 - in terminal run "npm start" and leave it running
+
 In client folder:
 - in terminal type "webpack -w" and leave it running
+
 In browser:
 - to play: http://localhost:3000/
 - to see our API: http://localhost:3000/sourcePokemons
