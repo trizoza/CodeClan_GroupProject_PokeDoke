@@ -24,3 +24,7 @@ In browser:
 - to see our API: http://localhost:3000/sourcePokemons
 
 For best experience hide browser's toolbar and go fullscreen. Enjoy ;)
+
+#Screenshots
+
+![alt text] (http://imgur.com/TW2dDPe.png)
