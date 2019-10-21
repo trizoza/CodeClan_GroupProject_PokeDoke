@@ -1,63 +1,54 @@
-var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-var MongoClient = require('mongodb').MongoClient;
+const axios = require('axios')
 
-var PopulateDatabaseWithPokemons = function(){
- this.url = 'mongodb://localhost:27017/pokedoke_db';
-};
-
-PopulateDatabaseWithPokemons.prototype =  {
-
-  makeRequest: function(callback) {
-    console.log('requesting pokemon data');
-    for (var i = 121; i < 152; i++) {
-      var request = new XMLHttpRequest();
-      var link = "http://pokeapi.co/api/v2/pokemon/" + i;
-      request.open("GET", link);
-      console.log(link);
-      request.onload = callback;
-      request.send();
+function returnPokemons() {
+  const pokemons = []
+  
+  function getPokemons(index = 1) {
+    let counter = 0
+    let requests = []
+    for (var i = index; i < (index + 50); i++) {
+      counter += 1
+      requests.push(axios.get("http://pokeapi.co/api/v2/pokemon/" + i))
     }
-  },
-
-  completeRequest: function() {
-    if (this.status !== 200) return;
-    var jsonString = this.responseText;
-    var jsonObject = JSON.parse(jsonString);
-
-    MongoClient.connect('mongodb://localhost:27017/pokedoke_db', function(err,db){
-      if(db){
-        var collection = db.collection('original151Pokemons');
-        var object = { name: "",
-        id: "",
-        defense: "",
-        attack: "",
-        hp: "",
-        front_picture: "",
-        back_picture: "",
-        type: "",
-        move: ""
-        };
-        var pokemonName = jsonObject.forms[0].name;
-        object.name = pokemonName;
-        object.id = jsonObject.id;
-        object.defense = jsonObject.stats[3].base_stat;
-        object.attack = jsonObject.stats[4].base_stat;
-        object.hp = jsonObject.stats[5].base_stat;
-        object.front_picture = jsonObject.sprites.front_default;
-        object.back_picture = jsonObject.sprites.back_default;
-        object.type = jsonObject.types[0].type.name;
-        object.move = jsonObject.moves[0].move.name;
-        collection.insert(object);
-        console.log('collection length', collection.length);
-        console.log('pokemon id', object.id);
-      }
-      db.close();
-    });
+  
+    return Promise.all(requests)
+      .then(res => {
+  
+        res.forEach(({ data }) => {
+          let obj = {}
+          obj.name = data.forms[0].name;
+          obj.id = data.id;
+          obj.defense = data.stats[3].base_stat;
+          obj.attack = data.stats[4].base_stat;
+          obj.hp = data.stats[5].base_stat;
+          obj.front_picture = data.sprites.front_default;
+          obj.back_picture = data.sprites.back_default;
+          obj.type = data.types[0].type.name;
+          obj.move = data.moves[0].move.name;
+          pokemons.push(obj)
+        })
+        console.log('counter ', index + counter);
+        
+        if ((index + counter) < 150) {
+          console.log(`pokemons counter ${index}`, pokemons.length);
+          return getPokemons(index + counter)
+        } else {
+          console.log(`pokemons final ${index}`, pokemons);
+          console.log(`pokemons final ${index}`, pokemons.length);
+          return pokemons
+        }
+  
+  
+      })
+      .catch(e => {
+        console.error('err ', e)
+      })
   }
+  
+  return getPokemons()
 
-};
+}
 
-
-var query = new PopulateDatabaseWithPokemons();
-
-query.makeRequest(query.completeRequest);
+module.exports = {
+  returnPokemons
+}

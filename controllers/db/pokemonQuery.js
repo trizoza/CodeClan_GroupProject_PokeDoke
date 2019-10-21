@@ -1,21 +1,19 @@
-var MongoClient = require('mongodb').MongoClient;
-var PokemonQuery = function(){
- this.url = 'mongodb://localhost:27017/pokedoke_db';
+const { returnPokemons } = require('./populateOriginalPokemons')
+
+var PokemonQuery = function () {
 };
 
 PokemonQuery.prototype = {
- all: function(onQueryFinished){
-   MongoClient.connect(this.url, function(err,db){
-     if(db){
-       var collection = db.collection('sourcePokemons');
-       collection.find().toArray(function(err,docs) {
-         onQueryFinished(docs);
-         console.log(collection);
-       });
-     }
-
-   });
- }
+  all: function (onQueryFinished) {
+    returnPokemons()
+      .then(res => {
+        console.log(res)
+        onQueryFinished(res)
+      })
+      .catch(err => {
+        console.log('err ', err)
+      })
+  }
 }
 
 
