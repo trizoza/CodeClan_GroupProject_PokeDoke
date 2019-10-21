@@ -1,10 +1,10 @@
 {
   "name": "poke-doke",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "cd client && webpack && (cd .. && node server.js)",
-    "dev": "nodemon server.js & (cd client && webpack -w)",
+    "start": "cd client && webpack && (cd .. && node index.js)",
+    "dev": "nodemon index.js & (cd client && webpack -w)",
     "test": "mocha ./client/src/models/specs"
   },
   "author": "",
@@ -13,11 +13,13 @@
     "axios": "^0.19.0",
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
+    "g": "^2.0.1",
     "mocha": "^3.2.0",
-    "webpack": "^2.2.1"
+    "webpack": "^2.7.0"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "webpack-cli": "^3.3.9"
   },
   "repository": {
     "type": "git",
